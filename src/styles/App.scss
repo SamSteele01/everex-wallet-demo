@@ -4,8 +4,8 @@
 }
 
 .col-6 {
-   padding-left: 0;
-   padding-right: 0;
+  padding-left: 0;
+  padding-right: 0;
 }
 
 i.fas {
@@ -13,6 +13,11 @@ i.fas {
 }
 
 .header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 90px;
   padding: 30px;
   position: relative;
   color: white;
@@ -36,7 +41,7 @@ i.fas {
       cursor: pointer;
       margin-left: 16px;
     }
-    color: #8762A6;
+    color: #8762a6;
     font-weight: 800;
   }
   margin-bottom: 10px;
@@ -50,7 +55,6 @@ i.fas {
   }
 
   .qr {
-
     canvas {
       margin: 0 auto;
       height: 256px;
@@ -65,20 +69,20 @@ i.fas {
       cursor: pointer;
       background: white;
       i {
-        color: #8762A6;
+        color: #8762a6;
       }
     }
   }
 
-  .bridge, .ops {
+  .bridge,
+  .ops {
     .btn {
-      background-color: #FFFFFF;
+      background-color: #ffffff;
       color: white;
       font-weight: 500;
     }
   }
 }
-
 
 .balance {
   width: 100%;
@@ -107,7 +111,7 @@ i.fas {
 
 .nav-card {
   i {
-    color: #8762A6;
+    color: #8762a6;
     line-height: 30px;
   }
   span {
@@ -125,11 +129,11 @@ i.fas {
   }
   button {
     margin-top: 10px;
-    font-size: 16px ;
+    font-size: 16px;
   }
 }
 
-.bottom-text{
+.bottom-text {
   margin-top: 20px;
   font-size: 16px;
   color: white;

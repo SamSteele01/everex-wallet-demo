@@ -82,8 +82,8 @@ let mainStyle = {
   backgroundImage: 'linear-gradient(#292929, #191919)',
   backgroundColor: '#191919',
   hotColor: '#F69E4D',
-  mainColorAlt: '#fa7d36',
-  mainColor: '#F76B1C',
+  mainColorAlt: '#aabcd7',
+  mainColor: '#354f9c',
 };
 
 let title = i18n.t('app_name');
@@ -1288,7 +1288,7 @@ class App extends Component {
       totalBalance += parseFloat(this.state.balance);
     }
 
-    let header = <div style={{ height: 50 }} />;
+    let header = <div style={{ height: 90 }} />;
     if (web3) {
       header = (
         <Header
@@ -1673,13 +1673,13 @@ class App extends Component {
                               }
                             />
                           </div>
-                          <Bottom
+                          {/* <Bottom
                             icon={'wrench'}
                             text={i18n.t('advance_title')}
                             action={() => {
                               this.changeView('advanced');
                             }}
-                          />
+                          /> */}
                         </div>
                       );
 
