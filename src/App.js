@@ -273,6 +273,9 @@ class App extends Component {
       hasUpdateOnce: false,
       badges: {},
       selectedBadge: false,
+      evxpBalance: 0,
+      ethBalance: 0,
+      usdBalance: 0,
     };
     this.alertTimeout = null;
 
