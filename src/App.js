@@ -94,103 +94,103 @@ let titleImage = (
 );
 
 //<i className="fas fa-fire" />
-if (
-  window.location.hostname.indexOf('localhost') >= 0 ||
-  window.location.hostname.indexOf('10.0.0.107') >= 0
-) {
-  XDAI_PROVIDER = 'http://localhost:8545';
-  WEB3_PROVIDER = 'http://localhost:8545';
-  CLAIM_RELAY = 'http://localhost:18462';
-  if (true) {
-    ERC20NAME = false;
-    ERC20TOKEN = false;
-    ERC20IMAGE = false;
-  } else {
-    ERC20NAME = 'BUFF';
-    ERC20VENDOR = 'VendingMachine';
-    ERC20TOKEN = 'ERC20Vendable';
-    ERC20IMAGE = bufficorn;
-    XDAI_PROVIDER = 'http://localhost:8545';
-    WEB3_PROVIDER = 'http://localhost:8545';
-    LOADERIMAGE = bufficorn;
-  }
-} else if (window.location.hostname.indexOf('s.xdai.io') >= 0) {
-  WEB3_PROVIDER = POA_XDAI_NODE;
-  CLAIM_RELAY = 'https://x.xdai.io';
-  ERC20TOKEN = false; //'Burner'
-} else if (window.location.hostname.indexOf('wallet.galleass.io') >= 0) {
-  //WEB3_PROVIDER = "https://rinkeby.infura.io/v3/e0ea6e73570246bbb3d4bd042c4b5dac";
-  WEB3_PROVIDER = 'http://localhost:8545';
-  //CLAIM_RELAY = 'https://x.xdai.io'
-  ERC20TOKEN = false; //'Burner'
-  document.domain = 'galleass.io';
-} else if (window.location.hostname.indexOf('qreth') >= 0) {
-  WEB3_PROVIDER =
-    'https://mainnet.infura.io/v3/e0ea6e73570246bbb3d4bd042c4b5dac';
-  CLAIM_RELAY = false;
-  ERC20TOKEN = false;
-} else if (window.location.hostname.indexOf('xdai') >= 0) {
-  WEB3_PROVIDER = POA_XDAI_NODE;
-  CLAIM_RELAY = 'https://x.xdai.io';
-  ERC20TOKEN = false;
-} else if (window.location.hostname.indexOf('buffidai') >= 0) {
-  WEB3_PROVIDER = POA_XDAI_NODE;
-  CLAIM_RELAY = 'https://x.xdai.io';
-  ERC20NAME = 'BUFF';
-  ERC20VENDOR = 'VendingMachine';
-  ERC20TOKEN = 'ERC20Vendable';
-  ERC20IMAGE = bufficorn;
-  LOADERIMAGE = bufficorn;
-} else if (window.location.hostname.indexOf('burnerwallet.io') >= 0) {
-  WEB3_PROVIDER = POA_XDAI_NODE;
-  CLAIM_RELAY = 'https://x.xdai.io';
-  ERC20NAME = 'BURN';
-  ERC20VENDOR = 'BurnerVendor';
-  ERC20TOKEN = 'Burner';
-  ERC20IMAGE = cypherpunk;
-  LOADERIMAGE = cypherpunk;
-} else if (window.location.hostname.indexOf('burnerwithrelays') >= 0) {
-  WEB3_PROVIDER = 'https://dai.poa.network';
-  ERC20NAME = false;
-  ERC20TOKEN = false;
-  ERC20IMAGE = false;
-}
-
-if (ERC20NAME === 'BUFF') {
-  mainStyle.backgroundImage = 'linear-gradient(#540d48, #20012d)';
-  mainStyle.backgroundColor = '#20012d';
-  mainStyle.mainColor = '#b6299e';
-  mainStyle.mainColorAlt = '#de3ec3';
-  title = 'BuffiDai.io';
-  titleImage = (
-    <img
-      src={bufficorn}
-      style={{
-        maxWidth: 50,
-        maxHeight: 50,
-        marginRight: 15,
-        marginTop: -10,
-      }}
-    />
-  );
-} else if (ERC20NAME == 'BURN') {
-  mainStyle.backgroundImage = 'linear-gradient(#4923d8, #6c0664)';
-  mainStyle.backgroundColor = '#6c0664';
-  mainStyle.mainColor = '#e72da3';
-  mainStyle.mainColorAlt = '#f948b8';
-  title = 'Burner';
-  titleImage = (
-    <img
-      src={cypherpunk}
-      style={{
-        maxWidth: 50,
-        maxHeight: 50,
-        marginRight: 15,
-        marginTop: -10,
-      }}
-    />
-  );
-}
+// if (
+//   window.location.hostname.indexOf('localhost') >= 0 ||
+//   window.location.hostname.indexOf('10.0.0.107') >= 0
+// ) {
+//   XDAI_PROVIDER = 'http://localhost:8545';
+//   WEB3_PROVIDER = 'http://localhost:8545';
+//   CLAIM_RELAY = 'http://localhost:18462';
+//   if (true) {
+//     ERC20NAME = false;
+//     ERC20TOKEN = false;
+//     ERC20IMAGE = false;
+//   } else {
+//     ERC20NAME = 'BUFF';
+//     ERC20VENDOR = 'VendingMachine';
+//     ERC20TOKEN = 'ERC20Vendable';
+//     ERC20IMAGE = bufficorn;
+//     XDAI_PROVIDER = 'http://localhost:8545';
+//     WEB3_PROVIDER = 'http://localhost:8545';
+//     LOADERIMAGE = bufficorn;
+//   }
+// } else if (window.location.hostname.indexOf('s.xdai.io') >= 0) {
+//   WEB3_PROVIDER = POA_XDAI_NODE;
+//   CLAIM_RELAY = 'https://x.xdai.io';
+//   ERC20TOKEN = false; //'Burner'
+// } else if (window.location.hostname.indexOf('wallet.galleass.io') >= 0) {
+//   //WEB3_PROVIDER = "https://rinkeby.infura.io/v3/e0ea6e73570246bbb3d4bd042c4b5dac";
+//   WEB3_PROVIDER = 'http://localhost:8545';
+//   //CLAIM_RELAY = 'https://x.xdai.io'
+//   ERC20TOKEN = false; //'Burner'
+//   document.domain = 'galleass.io';
+// } else if (window.location.hostname.indexOf('qreth') >= 0) {
+//   WEB3_PROVIDER =
+//     'https://mainnet.infura.io/v3/e0ea6e73570246bbb3d4bd042c4b5dac';
+//   CLAIM_RELAY = false;
+//   ERC20TOKEN = false;
+// } else if (window.location.hostname.indexOf('xdai') >= 0) {
+//   WEB3_PROVIDER = POA_XDAI_NODE;
+//   CLAIM_RELAY = 'https://x.xdai.io';
+//   ERC20TOKEN = false;
+// } else if (window.location.hostname.indexOf('buffidai') >= 0) {
+//   WEB3_PROVIDER = POA_XDAI_NODE;
+//   CLAIM_RELAY = 'https://x.xdai.io';
+//   ERC20NAME = 'BUFF';
+//   ERC20VENDOR = 'VendingMachine';
+//   ERC20TOKEN = 'ERC20Vendable';
+//   ERC20IMAGE = bufficorn;
+//   LOADERIMAGE = bufficorn;
+// } else if (window.location.hostname.indexOf('burnerwallet.io') >= 0) {
+//   WEB3_PROVIDER = POA_XDAI_NODE;
+//   CLAIM_RELAY = 'https://x.xdai.io';
+//   ERC20NAME = 'BURN';
+//   ERC20VENDOR = 'BurnerVendor';
+//   ERC20TOKEN = 'Burner';
+//   ERC20IMAGE = cypherpunk;
+//   LOADERIMAGE = cypherpunk;
+// } else if (window.location.hostname.indexOf('burnerwithrelays') >= 0) {
+//   WEB3_PROVIDER = 'https://dai.poa.network';
+//   ERC20NAME = false;
+//   ERC20TOKEN = false;
+//   ERC20IMAGE = false;
+// }
+//
+// if (ERC20NAME === 'BUFF') {
+//   mainStyle.backgroundImage = 'linear-gradient(#540d48, #20012d)';
+//   mainStyle.backgroundColor = '#20012d';
+//   mainStyle.mainColor = '#b6299e';
+//   mainStyle.mainColorAlt = '#de3ec3';
+//   title = 'BuffiDai.io';
+//   titleImage = (
+//     <img
+//       src={bufficorn}
+//       style={{
+//         maxWidth: 50,
+//         maxHeight: 50,
+//         marginRight: 15,
+//         marginTop: -10,
+//       }}
+//     />
+//   );
+// } else if (ERC20NAME == 'BURN') {
+//   mainStyle.backgroundImage = 'linear-gradient(#4923d8, #6c0664)';
+//   mainStyle.backgroundColor = '#6c0664';
+//   mainStyle.mainColor = '#e72da3';
+//   mainStyle.mainColorAlt = '#f948b8';
+//   title = 'Burner';
+//   titleImage = (
+//     <img
+//       src={cypherpunk}
+//       style={{
+//         maxWidth: 50,
+//         maxHeight: 50,
+//         marginRight: 15,
+//         marginTop: -10,
+//       }}
+//     />
+//   );
+// }
 
 let innerStyle = {
   maxWidth: 740,
@@ -298,62 +298,7 @@ class App extends Component {
       console.log(e);
     }
   }
-  parseAndCleanPath(path) {
-    let parts = path.split(';');
-    //console.log("PARTS",parts)
-    let state = {};
-    if (parts.length > 0) {
-      state.toAddress = parts[0].replace('/', '');
-    }
-    if (parts.length >= 2) {
-      state.amount = parts[1];
-    }
-    if (parts.length > 2) {
-      state.message = decodeURI(parts[2])
-        .replaceAll('%23', '#')
-        .replaceAll('%3B', ';')
-        .replaceAll('%3A', ':')
-        .replaceAll('%2F', '/');
-    }
-    if (parts.length > 3) {
-      state.extraMessage = decodeURI(parts[3])
-        .replaceAll('%23', '#')
-        .replaceAll('%3B', ';')
-        .replaceAll('%3A', ':')
-        .replaceAll('%2F', '/');
-    }
-    //console.log("STATE",state)
-    return state;
-  }
-  selectBadge(id) {
-    this.setState({ selectedBadge: id }, () => {
-      this.changeView('send_badge');
-    });
-  }
-  openScanner(returnState) {
-    this.setState({ returnState: returnState, view: 'send_by_scan' });
-  }
-  returnToState(scannerState) {
-    let updateState = Object.assign(
-      { scannerState: scannerState },
-      this.state.returnState,
-    );
-    updateState.returnState = false;
-    console.log('UPDATE FROM RETURN STATE', updateState);
-    this.setState(updateState);
-  }
-  clearBadges() {
-    this.setState({ badges: {} }, () => {
-      console.log('BADGES CLEARED', this.state.badges);
-    });
-  }
-  updateDimensions() {
-    //force it to rerender when the window is resized to make sure qr fits etc
-    this.forceUpdate();
-  }
-  saveKey(update) {
-    this.setState(update);
-  }
+
   componentDidMount() {
     document.body.style.backgroundColor = mainStyle.backgroundColor;
     console.log(
@@ -416,7 +361,7 @@ class App extends Component {
     // setTimeout(this.poll.bind(this), 150);
     setTimeout(this.setState({ web3: true }), 6500);
     // interval = setInterval(this.poll.bind(this), 1500);
-    // intervalLong = setInterval(this.longPoll.bind(this), 45000);
+    intervalLong = setInterval(this.longPoll.bind(this), 45000);
     // setTimeout(this.longPoll.bind(this), 150);
 
     // let mainnetweb3 = new Web3(new Web3.providers.WebsocketProvider('wss://mainnet.infura.io/ws/v3/e0ea6e73570246bbb3d4bd042c4b5dac'))
@@ -430,11 +375,86 @@ class App extends Component {
     // let xdaiweb3 = new Web3(new Web3.providers.HttpProvider(XDAI_PROVIDER))
     // this.setState({mainnetweb3,ensContract,xdaiweb3,daiContract})
   }
+
+  // componentDidUpdate(prevProps, prevState) {
+  //   let { network, web3 } = this.state;
+  //   if (web3 && network !== prevState.network /*&& !this.checkNetwork()*/) {
+  //     console.log(
+  //       'WEB3 DETECTED BUT NOT RIGHT NETWORK',
+  //       web3,
+  //       network,
+  //       prevState.network,
+  //     );
+  //     //this.changeAlert({
+  //     //  type: 'danger',
+  //     //  message: 'Wrong Network. Please use Custom RPC endpoint: https://dai.poa.network or turn off MetaMask.'
+  //     //}, false)
+  //   }
+  // }
+
   componentWillUnmount() {
     clearInterval(interval);
     clearInterval(intervalLong);
     window.removeEventListener('resize', this.updateDimensions.bind(this));
   }
+
+  parseAndCleanPath(path) {
+    let parts = path.split(';');
+    //console.log("PARTS",parts)
+    let state = {};
+    if (parts.length > 0) {
+      state.toAddress = parts[0].replace('/', '');
+    }
+    if (parts.length >= 2) {
+      state.amount = parts[1];
+    }
+    if (parts.length > 2) {
+      state.message = decodeURI(parts[2])
+        .replaceAll('%23', '#')
+        .replaceAll('%3B', ';')
+        .replaceAll('%3A', ':')
+        .replaceAll('%2F', '/');
+    }
+    if (parts.length > 3) {
+      state.extraMessage = decodeURI(parts[3])
+        .replaceAll('%23', '#')
+        .replaceAll('%3B', ';')
+        .replaceAll('%3A', ':')
+        .replaceAll('%2F', '/');
+    }
+    //console.log("STATE",state)
+    return state;
+  }
+  selectBadge(id) {
+    this.setState({ selectedBadge: id }, () => {
+      this.changeView('send_badge');
+    });
+  }
+  openScanner(returnState) {
+    this.setState({ returnState: returnState, view: 'send_by_scan' });
+  }
+  returnToState(scannerState) {
+    let updateState = Object.assign(
+      { scannerState: scannerState },
+      this.state.returnState,
+    );
+    updateState.returnState = false;
+    console.log('UPDATE FROM RETURN STATE', updateState);
+    this.setState(updateState);
+  }
+  clearBadges() {
+    this.setState({ badges: {} }, () => {
+      console.log('BADGES CLEARED', this.state.badges);
+    });
+  }
+  updateDimensions() {
+    //force it to rerender when the window is resized to make sure qr fits etc
+    this.forceUpdate();
+  }
+  saveKey(update) {
+    this.setState(update);
+  }
+
   // async poll() {
   //   let badgeBalance = 0;
   //   if (
@@ -572,14 +592,14 @@ class App extends Component {
   //     });
   //   }
   // }
-  // longPoll() {
-  //   axios
-  //     .get('https://api.coinmarketcap.com/v2/ticker/1027/')
-  //     .then(response => {
-  //       let ethprice = response.data.data.quotes.USD.price;
-  //       this.setState({ ethprice });
-  //     });
-  // }
+  longPoll() {
+    axios
+      .get('https://api.coinmarketcap.com/v2/ticker/1027/')
+      .then(response => {
+        let ethprice = response.data.data.quotes.USD.price;
+        this.setState({ ethprice });
+      });
+  }
   // setPossibleNewPrivateKey(value) {
   //   this.setState({ possibleNewPrivateKey: value }, () => {
   //     this.dealWithPossibleNewPrivateKey();
@@ -646,21 +666,6 @@ class App extends Component {
   //     setTimeout(this.dealWithPossibleNewPrivateKey.bind(this), 500);
   //   }
   // }
-  componentDidUpdate(prevProps, prevState) {
-    let { network, web3 } = this.state;
-    if (web3 && network !== prevState.network /*&& !this.checkNetwork()*/) {
-      console.log(
-        'WEB3 DETECTED BUT NOT RIGHT NETWORK',
-        web3,
-        network,
-        prevState.network,
-      );
-      //this.changeAlert({
-      //  type: 'danger',
-      //  message: 'Wrong Network. Please use Custom RPC endpoint: https://dai.poa.network or turn off MetaMask.'
-      //}, false)
-    }
-  }
 
   checkNetwork() {
     let { network } = this.state;
