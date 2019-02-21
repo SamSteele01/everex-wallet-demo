@@ -32,15 +32,21 @@ export default ({
     <div>
       <img
         src={everexLogo}
-        style={{ maxHeight: 50, opacity: 0.25, marginLeft: -20 }}
+        style={{
+          maxHeight: 80,
+          // opacity: 1,
+          marginLeft: -16,
+          borderRadius: '.25rem',
+        }}
       />
     </div>
   );
 
   if (typeof total == 'undefined' || Number.isNaN(total)) {
     moneyDisplay = (
-      <div style={{ opacity: 0.1, fontSize: 28, paddingTop: 15 }}>
-        connecting...
+      <div style={{ opacity: 0.4, fontSize: 28, paddingTop: 26 }}>
+        {/* connecting... */}
+        Anna Vladi
       </div>
     );
   } else {
@@ -67,40 +73,7 @@ export default ({
     delete scanButtonStyle.bottom;
   }
 
-  let bottomRight = (
-    <div
-      style={scanButtonStyle}
-      onClick={() => {
-        openScanner({ view: 'send_to_address' });
-      }}
-    >
-      <div
-        style={{
-          position: 'relative',
-          backgroundImage:
-            'linear-gradient(' +
-            mainStyle.mainColorAlt +
-            ',' +
-            mainStyle.mainColor +
-            ')',
-          backgroundColor: mainStyle.mainColor,
-          borderRadius: '50%',
-          width: 89,
-          height: 89,
-          boxShadow: '0.5px 0.5px 5px #000000',
-        }}
-      >
-        <a
-          href="#"
-          style={{ color: '#FFFFFF', position: 'absolute', left: 30, top: 28 }}
-        >
-          <i className="fas fa-qrcode" />
-        </a>
-      </div>
-    </div>
-  );
-
-  let opacity = 0.5;
+  let opacity = 1;
 
   let topLeft;
 
@@ -157,10 +130,43 @@ export default ({
         top: -4,
         zIndex: 1,
         fontSize: 46,
-        opacity: 0.9,
+        // opacity: 0.9,
       }}
     >
       {moneyDisplay}
+    </div>
+  );
+
+  let bottomRight = (
+    <div
+      style={scanButtonStyle}
+      onClick={() => {
+        openScanner({ view: 'send_to_address' });
+      }}
+    >
+      <div
+        style={{
+          position: 'relative',
+          backgroundImage:
+            'linear-gradient(' +
+            mainStyle.mainColorAlt +
+            ',' +
+            mainStyle.mainColor +
+            ')',
+          backgroundColor: mainStyle.mainColor,
+          borderRadius: '50%',
+          width: 89,
+          height: 89,
+          boxShadow: '0.5px 0.5px 5px #000000',
+        }}
+      >
+        <a
+          href="#"
+          style={{ color: '#FFFFFF', position: 'absolute', left: 30, top: 28 }}
+        >
+          <i className="fas fa-qrcode" />
+        </a>
+      </div>
     </div>
   );
 
