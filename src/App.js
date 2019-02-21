@@ -47,14 +47,16 @@ import BurnWallet from './components/BurnWallet';
 import Exchange from './components/Exchange';
 import Bottom from './components/Bottom';
 
-import burnerlogo from './styles/burnerwallet.png';
+// import burnerlogo from './styles/burnerwallet.png';
 import customRPCHint from './styles/customRPCHint.png';
-import bufficorn from './styles/bufficorn.png';
-import cypherpunk from './styles/cypherpunk.png';
-import eth from './styles/ethereum.png';
-import dai from './styles/dai.jpg';
-import xdai from './styles/xdai.jpg';
-import evxp from './styles/EVXP.png';
+// import bufficorn from './styles/bufficorn.png';
+// import cypherpunk from './styles/cypherpunk.png';
+import ethIcon from './styles/ethereum.png';
+// import dai from './styles/dai.jpg';
+// import xdai from './styles/xdai.jpg';
+import evxpLogo from './styles/Everex-EVX-icon.png';
+import evxpIcon from './styles/EVXP.png';
+import usdIcon from './styles/dollar-sign-vector.jpg';
 import './styles/App.scss';
 
 let base64url = require('base64url');
@@ -71,7 +73,7 @@ let ERC20TOKEN;
 let ERC20VENDOR;
 let ERC20IMAGE;
 let ERC20NAME;
-let LOADERIMAGE = evxp;
+let LOADERIMAGE = evxpLogo;
 let HARDCODEVIEW; // = "loader"// = "receipt"
 
 let mainStyle = {
@@ -1533,16 +1535,16 @@ class App extends Component {
                     );
                   }
 
-                  let selected = 'xDai';
+                  let selected = 'evxp';
                   let extraTokens = '';
 
                   let defaultBalanceDisplay = (
                     <div>
                       <Balance
-                        icon={xdai}
+                        icon={evxpIcon}
                         selected={false}
-                        text={'xdai'}
-                        amount={this.state.xdaiBalance}
+                        text={'EVXP'}
+                        amount={this.state.evxpBalance}
                         address={account}
                         dollarDisplay={dollarDisplay}
                       />
@@ -1593,15 +1595,15 @@ class App extends Component {
                             {extraTokens}
 
                             <Balance
-                              icon={evxp}
+                              icon={evxpIcon}
                               selected={selected}
                               text={'EVXP'}
-                              amount={this.state.xdaiBalance}
+                              amount={this.state.evxpBalance}
                               address={account}
                               dollarDisplay={dollarDisplay}
                             />
                             <Ruler />
-                            <Balance
+                            {/* <Balance
                               icon={dai}
                               selected={selected}
                               text={'DAI'}
@@ -1609,15 +1611,24 @@ class App extends Component {
                               address={account}
                               dollarDisplay={dollarDisplay}
                             />
-                            <Ruler />
+                            <Ruler /> */}
                             <Balance
-                              icon={eth}
+                              icon={ethIcon}
                               selected={selected}
                               text={'ETH'}
                               amount={
                                 parseFloat(this.state.ethBalance) *
                                 parseFloat(this.state.ethprice)
                               }
+                              address={account}
+                              dollarDisplay={dollarDisplay}
+                            />
+                            <Ruler />
+                            <Balance
+                              icon={usdIcon}
+                              selected={selected}
+                              text={'USD'}
+                              amount={this.state.usdBalance}
                               address={account}
                               dollarDisplay={dollarDisplay}
                             />
@@ -2176,19 +2187,19 @@ class App extends Component {
                               goBack={this.goBack.bind(this)}
                             />
                             <Exchange
-                              eth={eth}
-                              dai={dai}
-                              xdai={xdai}
+                              evxpIcon={evxpIcon}
+                              ethIcon={ethIcon}
+                              usdIcon={usdIcon}
                               ERC20NAME={ERC20NAME}
                               ERC20IMAGE={ERC20IMAGE}
                               ERC20TOKEN={ERC20TOKEN}
                               ERC20VENDOR={ERC20VENDOR}
+                              evxpBalance={this.state.evxpBalance}
                               ethprice={this.state.ethprice}
                               ethBalance={this.state.ethBalance}
-                              daiBalance={this.state.daiBalance}
-                              xdaiBalance={this.state.xdaiBalance}
-                              mainnetweb3={this.state.mainnetweb3}
-                              xdaiweb3={this.state.xdaiweb3}
+                              usdBalance={this.state.usdBalance}
+                              // mainnetweb3={this.state.mainnetweb3}
+                              // xdaiweb3={this.state.xdaiweb3}
                               daiContract={this.state.daiContract}
                               ensContract={this.state.ensContract}
                               isVendor={this.state.isVendor}
