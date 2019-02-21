@@ -23,9 +23,9 @@ const colStyle = {
   whiteSpace: 'nowrap',
 };
 
-const dendaiToxDaiEstimatedTime = 7000;
+const denusdToEthEstimatedTime = 7000;
 const xdaiToDaiEstimatedTime = 160000;
-const daiToxDaiEstimatedTime = 330000;
+const usdToEthEstimatedTime = 330000;
 
 const sendDaiEstimatedTime = 160000;
 
@@ -107,8 +107,8 @@ export default class Exchange extends React.Component {
       xdaiMetaAccount: xdaiMetaAccount,
       dendaiContract: dendaiContract,
       vendorContract: vendorContract,
-      daiToXdaiMode: false,
-      ethToDaiMode: false,
+      usdToEthMode: false,
+      ethToEvxpMode: false,
       loaderBarStatusText: i18n.t('loading'),
       loaderBarStartTime: Date.now(),
       loaderBarPercent: 2,
@@ -124,7 +124,7 @@ export default class Exchange extends React.Component {
       this.setState({
         canSendDai: this.canSendDai(),
         canSendEth: this.canSendEth(),
-        canSendXdai: this.canSendXdai(),
+        cansendEvxp: this.cansendEvxp(),
       });
     });
   };
@@ -132,7 +132,7 @@ export default class Exchange extends React.Component {
     this.setState({
       canSendDai: this.canSendDai(),
       canSendEth: this.canSendEth(),
-      canSendXdai: this.canSendXdai(),
+      cansendEvxp: this.cansendEvxp(),
     });
     interval = setInterval(this.poll.bind(this), 1500);
     setTimeout(this.poll.bind(this), 250);
@@ -336,7 +336,7 @@ export default class Exchange extends React.Component {
                                 .then(console.log);
                             });
                         } else {
-                          console.log('Use MetaMask to go xDai to ETH');
+                          console.log('Use MetaMask to go xEVXP to ETH');
                           this.props.tx(
                             gasEmitterContract.methods.goToETH(),
                             120000,
@@ -385,12 +385,12 @@ export default class Exchange extends React.Component {
         this.setState({ maxWithdrawlAmount });
       }
 
-      //dendaiToxDaiEstimatedTime
+      //denusdToEthEstimatedTime
       if (this.state.xdaiToDendaiMode == 'withdrawing') {
         let txAge = Date.now() - this.state.loaderBarStartTime;
         let percentDone = Math.min(
           100,
-          (txAge * 100) / dendaiToxDaiEstimatedTime + 5,
+          (txAge * 100) / denusdToEthEstimatedTime + 5,
         );
 
         let xdaiBalanceShouldBe =
@@ -423,7 +423,7 @@ export default class Exchange extends React.Component {
         let txAge = Date.now() - this.state.loaderBarStartTime;
         let percentDone = Math.min(
           100,
-          (txAge * 100) / daiToxDaiEstimatedTime + 5,
+          (txAge * 100) / usdToEthEstimatedTime + 5,
         );
 
         console.log(
@@ -464,7 +464,7 @@ export default class Exchange extends React.Component {
       //console.log("!! xdaiBalance:",xdaiBalance)
       this.setState({xdaiBalance:xdaiweb3.utils.fromWei(xdaiBalance,'ether')})
     }*/
-    if (this.state.daiToXdaiMode == 'withdrawing') {
+    if (this.state.usdToEthMode == 'withdrawing') {
       let txAge = Date.now() - this.state.loaderBarStartTime;
       let percentDone = Math.min(
         100,
@@ -485,7 +485,7 @@ export default class Exchange extends React.Component {
         });
         setTimeout(() => {
           this.setState({
-            daiToXdaiMode: false,
+            usdToEthMode: false,
             loaderBarStatusText: i18n.t('loading'),
             loaderBarStartTime: 0,
             loaderBarPercent: 1,
@@ -495,11 +495,11 @@ export default class Exchange extends React.Component {
       } else {
         this.setState({ loaderBarPercent: percentDone });
       }
-    } else if (this.state.daiToXdaiMode == 'depositing') {
+    } else if (this.state.usdToEthMode == 'depositing') {
       let txAge = Date.now() - this.state.loaderBarStartTime;
       let percentDone = Math.min(
         100,
-        (txAge * 100) / daiToxDaiEstimatedTime + 5,
+        (txAge * 100) / usdToEthEstimatedTime + 5,
       );
 
       //console.log("watching for ",this.state.xdaiBalance,"to be ",this.state.xdaiBalanceShouldBe-0.0005)
@@ -511,7 +511,7 @@ export default class Exchange extends React.Component {
         });
         setTimeout(() => {
           this.setState({
-            daiToXdaiMode: false,
+            usdToEthMode: false,
             loaderBarStatusText: i18n.t('loading'),
             loaderBarStartTime: 0,
             loaderBarPercent: 1,
@@ -521,7 +521,7 @@ export default class Exchange extends React.Component {
       } else {
         this.setState({ loaderBarPercent: percentDone });
       }
-    } else if (this.state.daiToXdaiMode == 'sending') {
+    } else if (this.state.usdToEthMode == 'sending') {
       let txAge = Date.now() - this.state.loaderBarStartTime;
       let percentDone = Math.min(100, (txAge * 100) / sendDaiEstimatedTime + 5);
 
@@ -539,7 +539,7 @@ export default class Exchange extends React.Component {
         });
         setTimeout(() => {
           this.setState({
-            daiToXdaiMode: false,
+            usdToEthMode: false,
             loaderBarStatusText: i18n.t('loading'),
             loaderBarStartTime: 0,
             loaderBarPercent: 1,
@@ -551,7 +551,7 @@ export default class Exchange extends React.Component {
       }
     }
 
-    if (this.state.ethToDaiMode == 'withdrawing') {
+    if (this.state.ethToEvxpMode == 'withdrawing') {
       let txAge = Date.now() - this.state.loaderBarStartTime;
       let percentDone = Math.min(
         100,
@@ -576,7 +576,7 @@ export default class Exchange extends React.Component {
         });
         setTimeout(() => {
           this.setState({
-            ethToDaiMode: false,
+            ethToEvxpMode: false,
             loaderBarStatusText: i18n.t('loading'),
             loaderBarStartTime: 0,
             loaderBarPercent: 1,
@@ -586,7 +586,7 @@ export default class Exchange extends React.Component {
       } else {
         this.setState({ loaderBarPercent: percentDone });
       }
-    } else if (this.state.ethToDaiMode == 'depositing') {
+    } else if (this.state.ethToEvxpMode == 'depositing') {
       let txAge = Date.now() - this.state.loaderBarStartTime;
       let percentDone = Math.min(
         100,
@@ -602,7 +602,7 @@ export default class Exchange extends React.Component {
         });
         setTimeout(() => {
           this.setState({
-            ethToDaiMode: false,
+            ethToEvxpMode: false,
             loaderBarStatusText: i18n.t('loading'),
             loaderBarStartTime: 0,
             loaderBarPercent: 1,
@@ -612,7 +612,7 @@ export default class Exchange extends React.Component {
       } else {
         this.setState({ loaderBarPercent: percentDone });
       }
-    } else if (this.state.ethToDaiMode == 'sending') {
+    } else if (this.state.ethToEvxpMode == 'sending') {
       let txAge = Date.now() - this.state.loaderBarStartTime;
       let percentDone = Math.min(
         100,
@@ -637,7 +637,7 @@ export default class Exchange extends React.Component {
         });
         setTimeout(() => {
           this.setState({
-            ethToDaiMode: false,
+            ethToEvxpMode: false,
             loaderBarStatusText: i18n.t('loading'),
             loaderBarStartTime: 0,
             loaderBarPercent: 1,
@@ -672,7 +672,7 @@ export default class Exchange extends React.Component {
       });
     } else {
       this.setState({
-        daiToXdaiMode: 'sending',
+        usdToEthMode: 'sending',
         daiBalanceAtStart: this.props.daiBalance,
         daiBalanceShouldBe:
           parseFloat(this.props.daiBalance) -
@@ -704,7 +704,7 @@ export default class Exchange extends React.Component {
               this.state.daiSendToAddress,
           });
           this.setState({
-            daiToXdaiMode: false,
+            usdToEthMode: false,
             daiSendAmount: '',
             daiSendToAddress: '',
             loaderBarColor: '#FFFFFF',
@@ -836,7 +836,7 @@ export default class Exchange extends React.Component {
         }
       });
   }
-  sendXdai() {
+  sendEvxp() {
     if (
       parseFloat(this.props.xdaiBalance) < parseFloat(this.state.xdaiSendAmount)
     ) {
@@ -876,7 +876,7 @@ export default class Exchange extends React.Component {
           alert(i18n.t('exchange.go_to_etherscan'));
         },
       });
-      this.setState({ sendXdai: false });
+      this.setState({ sendEvxp: false });
       this.props.nativeSend(
         this.state.xdaiSendToAddress,
         this.state.xdaiSendAmount,
@@ -905,7 +905,7 @@ export default class Exchange extends React.Component {
       this.transferDai(this.state.daiSendToAddress,this.state.daiSendAmount,"Sending "+this.state.daiSendAmount+" DAI to "+this.state.daiSendToAddress+"...",()=>{
         this.props.changeAlert({type: 'success',message: "Sent "+this.state.daiSendAmount+" DAI to "+this.state.daiSendToAddress});
         this.setState({
-          daiToXdaiMode:false,
+          usdToEthMode:false,
           daiSendAmount:"",
           daiSendToAddress:"",
           loaderBarColor:"#FFFFFF",
@@ -914,9 +914,9 @@ export default class Exchange extends React.Component {
       })*/
     }
   }
-  canSendXdai() {
+  cansendEvxp() {
     console.log(
-      'canSendXdai',
+      'cansendEvxp',
       this.state.xdaiSendToAddress,
       this.state.xdaiSendToAddress.length,
       parseFloat(this.state.xdaiSendAmount),
@@ -955,7 +955,7 @@ export default class Exchange extends React.Component {
       });
     } else {
       this.setState({
-        ethToDaiMode: 'sending',
+        ethToEvxpMode: 'sending',
         ethBalanceAtStart: this.props.ethBalance,
         ethBalanceShouldBe:
           parseFloat(this.props.ethBalance) - actualEthSendAmount,
@@ -995,7 +995,7 @@ export default class Exchange extends React.Component {
               this.state.ethSendToAddress,
           });
           this.setState({
-            ethToDaiMode: false,
+            ethToEvxpMode: false,
             ethSendAmount: '',
             ethSendToAddress: '',
             loaderBarColor: '#FFFFFF',
@@ -1094,7 +1094,7 @@ export default class Exchange extends React.Component {
           }
         });
     } else {
-      console.log('Using uniswap exchange to move ETH to DAI');
+      console.log('Using uniswap exchange to move ETH to EVXP');
 
       //send funds using metamask (or other injected web3 ... should be checked and on mainnet)
       this.setState({
@@ -1123,7 +1123,7 @@ export default class Exchange extends React.Component {
     }
   }
   render() {
-    let { xdaiToDendaiMode, daiToXdaiMode, ethToDaiMode } = this.state;
+    let { xdaiToDendaiMode, usdToEthMode, ethToEvxpMode } = this.state;
 
     let ethCancelButton = (
       <span style={{ padding: 10, whiteSpace: 'nowrap' }}>
@@ -1131,7 +1131,7 @@ export default class Exchange extends React.Component {
           href="#"
           style={{ color: '#000000' }}
           onClick={() => {
-            this.setState({ amount: '', ethToDaiMode: false });
+            this.setState({ amount: '', ethToEvxpMode: false });
           }}
         >
           <i className="fas fa-times" /> {i18n.t('cancel')}
@@ -1144,7 +1144,7 @@ export default class Exchange extends React.Component {
           href="#"
           style={{ color: '#000000' }}
           onClick={() => {
-            this.setState({ amount: '', daiToXdaiMode: false });
+            this.setState({ amount: '', usdToEthMode: false });
           }}
         >
           <i className="fas fa-times" /> {i18n.t('cancel')}
@@ -1169,12 +1169,12 @@ export default class Exchange extends React.Component {
       xdaiToDendaiMode == 'sending' ||
       xdaiToDendaiMode == 'withdrawing' ||
       xdaiToDendaiMode == 'depositing' ||
-      daiToXdaiMode == 'sending' ||
-      daiToXdaiMode == 'withdrawing' ||
-      daiToXdaiMode == 'depositing' ||
-      ethToDaiMode == 'sending' ||
-      ethToDaiMode == 'depositing' ||
-      ethToDaiMode == 'withdrawing';
+      usdToEthMode == 'sending' ||
+      usdToEthMode == 'withdrawing' ||
+      usdToEthMode == 'depositing' ||
+      ethToEvxpMode == 'sending' ||
+      ethToEvxpMode == 'depositing' ||
+      ethToEvxpMode == 'withdrawing';
 
     let adjustedFontSize = Math.round(
       (Math.min(document.documentElement.clientWidth, 600) / 600) * 24,
@@ -1681,14 +1681,14 @@ export default class Exchange extends React.Component {
       );
     }
 
-    let daiToXdaiDisplay = i18n.t('loading');
-    //console.log("daiToXdaiMode",daiToXdaiMode)
+    let usdToEthDisplay = i18n.t('loading');
+    //console.log("usdToEthMode",usdToEthMode)
     if (
-      daiToXdaiMode == 'sending' ||
-      daiToXdaiMode == 'withdrawing' ||
-      daiToXdaiMode == 'depositing'
+      usdToEthMode == 'sending' ||
+      usdToEthMode == 'withdrawing' ||
+      usdToEthMode == 'depositing'
     ) {
-      daiToXdaiDisplay = (
+      usdToEthDisplay = (
         <div className="content ops row" style={{ position: 'relative' }}>
           <button
             style={{
@@ -1714,9 +1714,9 @@ export default class Exchange extends React.Component {
           </div>
         </div>
       );
-    } else if (daiToXdaiMode == 'deposit') {
+    } else if (usdToEthMode == 'deposit') {
       if (!this.state.mainnetMetaAccount && this.props.network != 'Mainnet') {
-        daiToXdaiDisplay = (
+        usdToEthDisplay = (
           <div className="content ops row" style={{ textAlign: 'center' }}>
             <div className="col-12 p-1">
               Error: MetaMask network must be:{' '}
@@ -1724,7 +1724,7 @@ export default class Exchange extends React.Component {
               <a
                 href="#"
                 onClick={() => {
-                  this.setState({ daiToXdaiMode: false });
+                  this.setState({ usdToEthMode: false });
                 }}
                 style={{ marginLeft: 40, color: '#666666' }}
               >
@@ -1734,14 +1734,14 @@ export default class Exchange extends React.Component {
           </div>
         );
       } else if (this.props.ethBalance <= 0) {
-        daiToXdaiDisplay = (
+        usdToEthDisplay = (
           <div className="content ops row" style={{ textAlign: 'center' }}>
             <div className="col-12 p-1">
               Error: You must have ETH to send DAI.
               <a
                 href="#"
                 onClick={() => {
-                  this.setState({ daiToXdaiMode: false });
+                  this.setState({ usdToEthMode: false });
                 }}
                 style={{ marginLeft: 40, color: '#666666' }}
               >
@@ -1751,7 +1751,7 @@ export default class Exchange extends React.Component {
           </div>
         );
       } else {
-        daiToXdaiDisplay = (
+        usdToEthDisplay = (
           <div className="content ops row">
             <div className="col-1 p-1" style={colStyle}>
               <i className="fas fa-arrow-up" />
@@ -1783,7 +1783,7 @@ export default class Exchange extends React.Component {
                           this.setState({
                             canSendDai: this.canSendDai(),
                             canSendEth: this.canSendEth(),
-                            canSendXdai: this.canSendXdai(),
+                            cansendEvxp: this.cansendEvxp(),
                           });
                         },
                       );
@@ -1819,7 +1819,7 @@ export default class Exchange extends React.Component {
                   );
 
                   this.setState({
-                    daiToXdaiMode: 'depositing',
+                    usdToEthMode: 'depositing',
                     xdaiBalanceAtStart: this.props.xdaiBalance,
                     xdaiBalanceShouldBe:
                       parseFloat(this.props.xdaiBalance) +
@@ -1858,14 +1858,14 @@ export default class Exchange extends React.Component {
           </div>
         );
       }
-    } else if (daiToXdaiMode == 'withdraw') {
+    } else if (usdToEthMode == 'withdraw') {
       console.log(
         'CHECKING META ACCOUNT ',
         this.state.xdaiMetaAccount,
         this.props.network,
       );
       if (!this.state.xdaiMetaAccount && this.props.network != 'xDai') {
-        daiToXdaiDisplay = (
+        usdToEthDisplay = (
           <div className="content ops row" style={{ textAlign: 'center' }}>
             <div className="col-12 p-1">
               Error: MetaMask network must be:{' '}
@@ -1875,7 +1875,7 @@ export default class Exchange extends React.Component {
               <a
                 href="#"
                 onClick={() => {
-                  this.setState({ daiToXdaiMode: false });
+                  this.setState({ usdToEthMode: false });
                 }}
                 style={{ marginLeft: 40, color: '#666666' }}
               >
@@ -1885,7 +1885,7 @@ export default class Exchange extends React.Component {
           </div>
         );
       } else {
-        daiToXdaiDisplay = (
+        usdToEthDisplay = (
           <div className="content ops row">
             <div className="col-1 p-1" style={colStyle}>
               <i className="fas fa-arrow-down" />
@@ -1919,7 +1919,7 @@ export default class Exchange extends React.Component {
                           this.setState({
                             canSendDai: this.canSendDai(),
                             canSendEth: this.canSendEth(),
-                            canSendXdai: this.canSendXdai(),
+                            cansendEvxp: this.cansendEvxp(),
                           });
                         },
                       );
@@ -1954,7 +1954,7 @@ export default class Exchange extends React.Component {
                     this.props.daiBalance,
                   );
                   this.setState({
-                    daiToXdaiMode: 'withdrawing',
+                    usdToEthMode: 'withdrawing',
                     daiBalanceAtStart: this.props.daiBalance,
                     daiBalanceShouldBe:
                       parseFloat(this.props.daiBalance) +
@@ -2094,7 +2094,7 @@ export default class Exchange extends React.Component {
         );
       }
     } else {
-      daiToXdaiDisplay = (
+      usdToEthDisplay = (
         <div className="content ops row">
           <div className="col-6 p-1">
             <button
@@ -2102,11 +2102,11 @@ export default class Exchange extends React.Component {
               style={this.props.buttonStyle.primary}
               disabled={buttonsDisabled}
               onClick={() => {
-                this.setState({ daiToXdaiMode: 'deposit' });
+                this.setState({ usdToEthMode: 'deposit' });
               }}
             >
               <Scaler config={{ startZoomAt: 400, origin: '50% 50%' }}>
-                <i className="fas fa-arrow-up" /> DAI to xDai
+                <i className="fas fa-arrow-up" /> USD to ETH
               </Scaler>
             </button>
           </div>
@@ -2117,11 +2117,11 @@ export default class Exchange extends React.Component {
               style={this.props.buttonStyle.primary}
               disabled={buttonsDisabled}
               onClick={() => {
-                this.setState({ daiToXdaiMode: 'withdraw' });
+                this.setState({ usdToEthMode: 'withdraw' });
               }}
             >
               <Scaler config={{ startZoomAt: 400, origin: '50% 50%' }}>
-                <i className="fas fa-arrow-down" /> xDai to DAI
+                <i className="fas fa-arrow-down" /> ETH to USD
               </Scaler>
             </button>
           </div>
@@ -2129,14 +2129,14 @@ export default class Exchange extends React.Component {
       );
     }
 
-    let ethToDaiDisplay = i18n.t('loading');
+    let ethToEvxpDisplay = i18n.t('loading');
 
     if (
-      ethToDaiMode == 'sending' ||
-      ethToDaiMode == 'depositing' ||
-      ethToDaiMode == 'withdrawing'
+      ethToEvxpMode == 'sending' ||
+      ethToEvxpMode == 'depositing' ||
+      ethToEvxpMode == 'withdrawing'
     ) {
-      ethToDaiDisplay = (
+      ethToEvxpDisplay = (
         <div className="content ops row" style={{ position: 'relative' }}>
           <button
             style={{
@@ -2162,9 +2162,9 @@ export default class Exchange extends React.Component {
           </div>
         </div>
       );
-    } else if (ethToDaiMode == 'deposit') {
+    } else if (ethToEvxpMode == 'deposit') {
       if (!this.state.mainnetMetaAccount && this.props.network != 'Mainnet') {
-        ethToDaiDisplay = (
+        ethToEvxpDisplay = (
           <div className="content ops row" style={{ textAlign: 'center' }}>
             <div className="col-12 p-1">
               Error: MetaMask network must be:{' '}
@@ -2172,7 +2172,7 @@ export default class Exchange extends React.Component {
               <a
                 href="#"
                 onClick={() => {
-                  this.setState({ ethToDaiMode: false });
+                  this.setState({ ethToEvxpMode: false });
                 }}
                 style={{ marginLeft: 40, color: '#666666' }}
               >
@@ -2182,7 +2182,7 @@ export default class Exchange extends React.Component {
           </div>
         );
       } else {
-        ethToDaiDisplay = (
+        ethToEvxpDisplay = (
           <div className="content ops row">
             <div className="col-1 p-1" style={colStyle}>
               <i className="fas fa-arrow-up" />
@@ -2261,7 +2261,7 @@ export default class Exchange extends React.Component {
                                 this.setState({
                                   canSendDai: this.canSendDai(),
                                   canSendEth: this.canSendEth(),
-                                  canSendXdai: this.canSendXdai(),
+                                  cansendEvxp: this.cansendEvxp(),
                                 });
                               },
                             );
@@ -2291,7 +2291,7 @@ export default class Exchange extends React.Component {
                 disabled={buttonsDisabled}
                 style={this.props.buttonStyle.primary}
                 onClick={async () => {
-                  console.log('Using uniswap exchange to move ETH to DAI');
+                  console.log('Using uniswap exchange to move ETH to EVXP');
 
                   let webToUse = this.props.web3;
                   if (this.state.mainnetMetaAccount) {
@@ -2344,7 +2344,7 @@ export default class Exchange extends React.Component {
                   );
 
                   this.setState({
-                    ethToDaiMode: 'depositing',
+                    ethToEvxpMode: 'depositing',
                     loaderBarColor: '#3efff8',
                     loaderBarStatusText: i18n.t('exchange.calculate_gas_price'),
                     loaderBarPercent: 0,
@@ -2390,9 +2390,9 @@ export default class Exchange extends React.Component {
           </div>
         );
       }
-    } else if (ethToDaiMode == 'withdraw') {
+    } else if (ethToEvxpMode == 'withdraw') {
       if (!this.state.mainnetMetaAccount && this.props.network != 'Mainnet') {
-        ethToDaiDisplay = (
+        ethToEvxpDisplay = (
           <div className="content ops row" style={{ textAlign: 'center' }}>
             <div className="col-12 p-1">
               Error: MetaMask network must be:{' '}
@@ -2400,7 +2400,7 @@ export default class Exchange extends React.Component {
               <a
                 href="#"
                 onClick={() => {
-                  this.setState({ ethToDaiMode: false });
+                  this.setState({ ethToEvxpMode: false });
                 }}
                 style={{ marginLeft: 40, color: '#666666' }}
               >
@@ -2410,14 +2410,14 @@ export default class Exchange extends React.Component {
           </div>
         );
       } else if (this.props.ethBalance <= 0) {
-        ethToDaiDisplay = (
+        ethToEvxpDisplay = (
           <div className="content ops row" style={{ textAlign: 'center' }}>
             <div className="col-12 p-1">
               Error: You must have ETH to send DAI.
               <a
                 href="#"
                 onClick={() => {
-                  this.setState({ ethToDaiMode: false });
+                  this.setState({ ethToEvxpMode: false });
                 }}
                 style={{ marginLeft: 40, color: '#666666' }}
               >
@@ -2427,7 +2427,7 @@ export default class Exchange extends React.Component {
           </div>
         );
       } else {
-        ethToDaiDisplay = (
+        ethToEvxpDisplay = (
           <div className="content ops row">
             <div className="col-1 p-1" style={colStyle}>
               <i className="fas fa-arrow-down" />
@@ -2459,7 +2459,7 @@ export default class Exchange extends React.Component {
                           this.setState({
                             canSendDai: this.canSendDai(),
                             canSendEth: this.canSendEth(),
-                            canSendXdai: this.canSendXdai(),
+                            cansendEvxp: this.cansendEvxp(),
                           });
                         },
                       );
@@ -2487,7 +2487,7 @@ export default class Exchange extends React.Component {
                 disabled={buttonsDisabled}
                 style={this.props.buttonStyle.primary}
                 onClick={async () => {
-                  console.log('Using uniswap exchange to move DAI to ETH');
+                  console.log('Using uniswap exchange to move EVXP to ETH');
 
                   let webToUse = this.props.web3;
                   if (this.state.mainnetMetaAccount) {
@@ -2554,7 +2554,7 @@ export default class Exchange extends React.Component {
                   );
 
                   this.setState({
-                    ethToDaiMode: 'withdrawing',
+                    ethToEvxpMode: 'withdrawing',
                     loaderBarColor: '#3efff8',
                     loaderBarStatusText: i18n.t('exchange.calculate_gas_price'),
                     loaderBarPercent: 0,
@@ -2821,7 +2821,7 @@ export default class Exchange extends React.Component {
                         }
                       });
                   } else {
-                    console.log('Using uniswap exchange to move ETH to DAI');
+                    console.log('Using uniswap exchange to move ETH to EVXP');
 
                     if (approval < amountOfDai) {
                       console.log('approval', approval);
@@ -2936,7 +2936,7 @@ export default class Exchange extends React.Component {
         );
       }
     } else {
-      ethToDaiDisplay = (
+      ethToEvxpDisplay = (
         <div className="content ops row">
           <div className="col-6 p-1">
             <button
@@ -2944,11 +2944,11 @@ export default class Exchange extends React.Component {
               style={this.props.buttonStyle.primary}
               disabled={buttonsDisabled}
               onClick={() => {
-                this.setState({ ethToDaiMode: 'deposit' });
+                this.setState({ ethToEvxpMode: 'deposit' });
               }}
             >
               <Scaler config={{ startZoomAt: 400, origin: '50% 50%' }}>
-                <i className="fas fa-arrow-up" /> ETH to DAI
+                <i className="fas fa-arrow-up" /> ETH to EVXP
               </Scaler>
             </button>
           </div>
@@ -2959,11 +2959,11 @@ export default class Exchange extends React.Component {
               style={this.props.buttonStyle.primary}
               disabled={buttonsDisabled}
               onClick={() => {
-                this.setState({ ethToDaiMode: 'withdraw' });
+                this.setState({ ethToEvxpMode: 'withdraw' });
               }}
             >
               <Scaler config={{ startZoomAt: 400, origin: '50% 50%' }}>
-                <i className="fas fa-arrow-down" /> DAI to ETH
+                <i className="fas fa-arrow-down" /> EVXP to ETH
               </Scaler>
             </button>
           </div>
@@ -3042,7 +3042,7 @@ export default class Exchange extends React.Component {
                         this.setState({
                           canSendDai: this.canSendDai(),
                           canSendEth: this.canSendEth(),
-                          canSendXdai: this.canSendXdai(),
+                          cansendEvxp: this.cansendEvxp(),
                         });
                       },
                     );
@@ -3202,7 +3202,7 @@ export default class Exchange extends React.Component {
                               this.setState({
                                 canSendDai: this.canSendDai(),
                                 canSendEth: this.canSendEth(),
-                                canSendXdai: this.canSendXdai(),
+                                cansendEvxp: this.cansendEvxp(),
                               });
                             },
                           );
@@ -3248,16 +3248,16 @@ export default class Exchange extends React.Component {
       );
     }
 
-    let sendXdaiButton;
+    let sendEvxpButton;
 
     if (this.props.ERC20TOKEN) {
-      sendXdaiButton = (
+      sendEvxpButton = (
         <button
           className="btn btn-large w-100"
           disabled={buttonsDisabled}
           style={this.props.buttonStyle.secondary}
           onClick={() => {
-            this.setState({ sendXdai: true });
+            this.setState({ sendEvxp: true });
           }}
         >
           <Scaler config={{ startZoomAt: 400, origin: '50% 50%' }}>
@@ -3266,7 +3266,7 @@ export default class Exchange extends React.Component {
         </button>
       );
     } else {
-      sendXdaiButton = (
+      sendEvxpButton = (
         <button
           className="btn btn-large w-100"
           disabled={buttonsDisabled}
@@ -3280,9 +3280,9 @@ export default class Exchange extends React.Component {
       );
     }
 
-    let sendXdaiRow = '';
-    if (this.state.sendXdai) {
-      sendXdaiRow = (
+    let sendEvxpRow = '';
+    if (this.state.sendEvxp) {
+      sendEvxpRow = (
         <div className="send-to-address card w-100" style={{ marginTop: 20 }}>
           <div className="content ops row">
             <div className="form-group w-100">
@@ -3336,7 +3336,7 @@ export default class Exchange extends React.Component {
                         this.setState({
                           canSendDai: this.canSendDai(),
                           canSendEth: this.canSendEth(),
-                          canSendXdai: this.canSendXdai(),
+                          cansendEvxp: this.cansendEvxp(),
                         });
                       },
                     );
@@ -3355,9 +3355,9 @@ export default class Exchange extends React.Component {
                 style={this.props.buttonStyle.primary}
                 disabled={buttonsDisabled}
                 className={`btn btn-success btn-lg w-100 ${
-                  this.state.canSendXdai ? '' : 'disabled'
+                  this.state.cansendEvxp ? '' : 'disabled'
                 }`}
-                onClick={this.sendXdai.bind(this)}
+                onClick={this.sendEvxp.bind(this)}
               >
                 Send
               </button>
@@ -3365,12 +3365,12 @@ export default class Exchange extends React.Component {
           </div>
         </div>
       );
-      sendXdaiButton = (
+      sendEvxpButton = (
         <button
           className="btn btn-large w-100"
           style={{ backgroundColor: '#888888', whiteSpace: 'nowrap' }}
           onClick={() => {
-            this.setState({ sendXdai: false });
+            this.setState({ sendEvxp: false });
           }}
         >
           <Scaler config={{ startZoomAt: 400, origin: '50% 50%' }}>
@@ -3387,53 +3387,30 @@ export default class Exchange extends React.Component {
 
         <div className="content ops row" style={{ paddingBottom: 20 }}>
           <div className="col-2 p-1">
-            <img style={logoStyle} src={this.props.xdai} />
+            <img style={logoStyle} src={this.props.evxpIcon} />
           </div>
           <div className="col-3 p-1" style={{ marginTop: 8 }}>
-            xDai
+            EVXP
           </div>
           <div
             className="col-5 p-1"
             style={{ marginTop: 8, whiteSpace: 'nowrap' }}
           >
             <Scaler config={{ startZoomAt: 400, origin: '50% 50%' }}>
-              ${this.props.dollarDisplay(this.props.xdaiBalance)}
+              ${this.props.dollarDisplay(this.props.evxpBalance)}
             </Scaler>
           </div>
           <div className="col-2 p-1" style={{ marginTop: 8 }}>
-            {sendXdaiButton}
+            {sendEvxpButton}
           </div>
         </div>
-        {sendXdaiRow}
+        {sendEvxpRow}
 
-        <div className="main-card card w-100">{daiToXdaiDisplay}</div>
+        <div className="main-card card w-100">{ethToEvxpDisplay}</div>
 
         <div className="content ops row" style={{ paddingBottom: 20 }}>
           <div className="col-2 p-1">
-            <img style={logoStyle} src={this.props.dai} />
-          </div>
-          <div className="col-3 p-1" style={{ marginTop: 9 }}>
-            DAI
-          </div>
-          <div
-            className="col-5 p-1"
-            style={{ marginTop: 9, whiteSpace: 'nowrap' }}
-          >
-            <Scaler config={{ startZoomAt: 400, origin: '50% 50%' }}>
-              ${this.props.dollarDisplay(this.props.daiBalance)}
-            </Scaler>
-          </div>
-          <div className="col-2 p-1" style={{ marginTop: 8 }}>
-            {sendDaiButton}
-          </div>
-        </div>
-        {sendDaiRow}
-
-        <div className="main-card card w-100">{ethToDaiDisplay}</div>
-
-        <div className="content ops row" style={{ paddingBottom: 20 }}>
-          <div className="col-2 p-1">
-            <img style={logoStyle} src={this.props.eth} />
+            <img style={logoStyle} src={this.props.ethIcon} />
           </div>
           <div className="col-3 p-1" style={{ marginTop: 10 }}>
             ETH
@@ -3455,6 +3432,29 @@ export default class Exchange extends React.Component {
         </div>
         {sendEthRow}
         {this.state.extraGasUpDisplay}
+
+        <div className="main-card card w-100">{usdToEthDisplay}</div>
+
+        <div className="content ops row" style={{ paddingBottom: 20 }}>
+          <div className="col-2 p-1">
+            <img style={logoStyle} src={this.props.usdIcon} />
+          </div>
+          <div className="col-3 p-1" style={{ marginTop: 9 }}>
+            USD
+          </div>
+          <div
+            className="col-5 p-1"
+            style={{ marginTop: 9, whiteSpace: 'nowrap' }}
+          >
+            <Scaler config={{ startZoomAt: 400, origin: '50% 50%' }}>
+              ${this.props.dollarDisplay(this.props.usdBalance)}
+            </Scaler>
+          </div>
+          <div className="col-2 p-1" style={{ marginTop: 8 }}>
+            {sendDaiButton}
+          </div>
+        </div>
+        {sendDaiRow}
       </div>
     );
   }
