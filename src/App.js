@@ -2218,7 +2218,7 @@ class App extends Component {
                               setGwei={this.setGwei}
                               network={this.state.network}
                               tx={this.state.tx}
-                              web3={this.state.web3}
+                              // web3={this.state.web3}
                               send={this.state.send}
                               nativeSend={this.state.nativeSend}
                               address={account}
