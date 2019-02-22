@@ -62,7 +62,8 @@ import './styles/App.scss';
 let base64url = require('base64url');
 const EthCrypto = require('eth-crypto');
 
-//const POA_XDAI_NODE = "https://dai-b.poa.network"
+const MAINNET_NETWORK =
+  'https://mainnet.infura.io/v3/3059c072371d4397b84e9577f896d91c';
 const POA_XDAI_NODE = 'https://dai.poa.network';
 
 let XDAI_PROVIDER = POA_XDAI_NODE;
