@@ -3452,7 +3452,7 @@ export default class Exchange extends React.Component {
         {sendEthRow}
         {this.state.extraGasUpDisplay}
 
-        <div className="main-card card w-100">{usdToEthDisplay}</div>
+        {/* <div className="main-card card w-100">{usdToEthDisplay}</div>
 
         <div className="content ops row" style={{ paddingBottom: 20 }}>
           <div className="col-2 p-1">
@@ -3472,7 +3472,7 @@ export default class Exchange extends React.Component {
           <div className="col-2 p-1" style={{ marginTop: 8 }}>
             {sendDaiButton}
           </div>
-        </div>
+        </div> */}
         {/* {sendDaiRow} */}
       </div>
     );
