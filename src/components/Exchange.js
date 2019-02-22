@@ -1122,6 +1122,16 @@ export default class Exchange extends React.Component {
       }
     }
   }
+
+  /*
+  :::::::..  .,:::::::::.    :::.:::::::-.  .,:::::: :::::::..
+  ;;;;``;;;; ;;;;''''`;;;;,  `;;; ;;,   `';,;;;;'''' ;;;;``;;;;
+  [[[,/[[['  [[cccc   [[[[[. '[[ `[[     [[ [[cccc   [[[,/[[['
+  $$$$$$c    $$""""   $$$ "Y$c$$  $$,    $$ $$""""   $$$$$$c
+  888b "88bo,888oo,__ 888    Y88  888_,o8P' 888oo,__ 888b "88bo,
+  MMMM   "W" """"YUMMMMMM     YM  MMMMP"`   """"YUMMMMMMM   "W"
+ */
+
   render() {
     let { xdaiToDendaiMode, usdToEthMode, ethToEvxpMode } = this.state;
 
@@ -3379,6 +3389,15 @@ export default class Exchange extends React.Component {
         </button>
       );
     }
+
+    /*
+   :::::::..  .,::::::::::::::::::...    ::::::::::.. :::.    :::.
+   ;;;;``;;;; ;;;;'''';;;;;;;;'''';;     ;;;;;;;``;;;;`;;;;,  `;;;
+    [[[,/[[['  [[cccc      [[    [['     [[[ [[[,/[[['  [[[[[. '[[
+    $$$$$$c    $$""""      $$    $$      $$$ $$$$$$c    $$$ "Y$c$$
+    888b "88bo,888oo,__    88,   88    .d888 888b "88bo,888    Y88
+    MMMM   "W" """"YUMMM   MMM    "YmmMMMM"" MMMM   "W" MMM     YM
+  */
 
     //console.log("eth price ",this.props.ethBalance,this.props.ethprice)
     return (

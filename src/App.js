@@ -1225,6 +1225,15 @@ class App extends Component {
     }
   }
 
+  /*
+  :::::::..  .,:::::::::.    :::.:::::::-.  .,:::::: :::::::..
+  ;;;;``;;;; ;;;;''''`;;;;,  `;;; ;;,   `';,;;;;'''' ;;;;``;;;;
+  [[[,/[[['  [[cccc   [[[[[. '[[ `[[     [[ [[cccc   [[[,/[[['
+  $$$$$$c    $$""""   $$$ "Y$c$$  $$,    $$ $$""""   $$$$$$c
+  888b "88bo,888oo,__ 888    Y88  888_,o8P' 888oo,__ 888b "88bo,
+  MMMM   "W" """"YUMMMMMM     YM  MMMMP"`   """"YUMMMMMMM   "W"
+ */
+
   render() {
     let {
       web3,
@@ -1360,13 +1369,22 @@ class App extends Component {
       );
     }
 
+    /*
+     :::::::..  .,::::::::::::::::::...    ::::::::::.. :::.    :::.
+     ;;;;``;;;; ;;;;'''';;;;;;;;'''';;     ;;;;;;;``;;;;`;;;;,  `;;;
+      [[[,/[[['  [[cccc      [[    [['     [[[ [[[,/[[['  [[[[[. '[[
+      $$$$$$c    $$""""      $$    $$      $$$ $$$$$$c    $$$ "Y$c$$
+      888b "88bo,888oo,__    88,   88    .d888 888b "88bo,888    Y88
+      MMMM   "W" """"YUMMM   MMM    "YmmMMMM"" MMMM   "W" MMM     YM
+    */
+
     return (
       <I18nextProvider i18n={i18n}>
         <div style={mainStyle}>
           <div style={innerStyle}>
             {extraHead}
-            {/* {networkOverlay} */}
-            {/* {web3_setup} */}
+            {networkOverlay}
+            {web3_setup}
 
             <div>
               {header}
