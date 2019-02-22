@@ -390,10 +390,15 @@ class App extends Component {
         'wss://mainnet.infura.io/ws/v3/e0ea6e73570246bbb3d4bd042c4b5dac',
       ),
     );
-    let ensContract = new mainnetweb3.eth.Contract(
-      require('./contracts/ENS.abi.js'),
-      require('./contracts/ENS.address.js'),
-    );
+    let ensContract;
+    try {
+      let ensContract = new mainnetweb3.eth.Contract(
+        require('./contracts/ENS.abi.js'), // missing!!
+        require('./contracts/ENS.address.js'),
+      );
+    } catch (e) {
+      console.log('ERROR LOADING ENS Contract', e);
+    }
     let daiContract;
     try {
       daiContract = new mainnetweb3.eth.Contract(
