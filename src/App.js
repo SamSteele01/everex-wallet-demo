@@ -381,7 +381,8 @@ class App extends Component {
       }
     }
     setTimeout(this.poll.bind(this), 150);
-    setTimeout(this.setState({ web3: true }), 6500);
+    setTimeout(this.poll.bind(this), 650);
+    // setTimeout(this.setState({ web3: true }), 6500);
     interval = setInterval(this.poll.bind(this), 1500);
     intervalLong = setInterval(this.longPoll.bind(this), 45000);
     setTimeout(this.longPoll.bind(this), 150);
