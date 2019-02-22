@@ -2146,6 +2146,7 @@ export default class Exchange extends React.Component {
       ethToEvxpMode == 'depositing' ||
       ethToEvxpMode == 'withdrawing'
     ) {
+      /* display loader */
       ethToEvxpDisplay = (
         <div className="content ops row" style={{ position: 'relative' }}>
           <button
@@ -2174,6 +2175,7 @@ export default class Exchange extends React.Component {
       );
     } else if (ethToEvxpMode == 'deposit') {
       if (!this.state.mainnetMetaAccount && this.props.network != 'Mainnet') {
+        /* not on mainnet */
         ethToEvxpDisplay = (
           <div className="content ops row" style={{ textAlign: 'center' }}>
             <div className="col-12 p-1">
