@@ -721,9 +721,9 @@ class App extends Component {
     }
   }
 
-  checkNetwork() {
+  checkNetwork(networkString) {
     let { network } = this.state;
-    return network === 'xDai' || network === 'Unknown';
+    return network === networkString || network === 'Unknown';
   }
 
   checkClaim(tx, contracts) {
