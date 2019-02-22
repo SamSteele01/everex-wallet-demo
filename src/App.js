@@ -254,14 +254,14 @@ class App extends Component {
     let cachedViewSetAge = Date.now() - localStorage.getItem('viewSetTime');
     if (HARDCODEVIEW) {
       view = HARDCODEVIEW;
-    } else if (cachedViewSetAge < 300000 && cachedView && cachedView != 0) {
+    } else if (cachedViewSetAge < 300000 && cachedView && cachedView !== 0) {
       view = cachedView;
     }
     console.log('CACHED VIEW', view);
 
     super(props);
     this.state = {
-      // web3: false,
+      web3: false,
       account: false,
       gwei: 1.1,
       view: view,
