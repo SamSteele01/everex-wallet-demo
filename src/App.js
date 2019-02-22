@@ -7,7 +7,7 @@ import {
   Address,
   Events,
 } from 'dapparatus';
-// import Web3 from 'web3';
+import Web3 from 'web3';
 import axios from 'axios';
 import { I18nextProvider } from 'react-i18next';
 import i18n from './i18n';
@@ -93,69 +93,72 @@ let titleImage = (
   </span>
 );
 
-//<i className="fas fa-fire" />
-// if (
-//   window.location.hostname.indexOf('localhost') >= 0 ||
-//   window.location.hostname.indexOf('10.0.0.107') >= 0
-// ) {
-//   XDAI_PROVIDER = 'http://localhost:8545';
-//   WEB3_PROVIDER = 'http://localhost:8545';
-//   CLAIM_RELAY = 'http://localhost:18462';
-//   if (true) {
-//     ERC20NAME = false;
-//     ERC20TOKEN = false;
-//     ERC20IMAGE = false;
-//   } else {
-//     ERC20NAME = 'BUFF';
-//     ERC20VENDOR = 'VendingMachine';
-//     ERC20TOKEN = 'ERC20Vendable';
-//     ERC20IMAGE = bufficorn;
-//     XDAI_PROVIDER = 'http://localhost:8545';
-//     WEB3_PROVIDER = 'http://localhost:8545';
-//     LOADERIMAGE = bufficorn;
-//   }
-// } else if (window.location.hostname.indexOf('s.xdai.io') >= 0) {
-//   WEB3_PROVIDER = POA_XDAI_NODE;
-//   CLAIM_RELAY = 'https://x.xdai.io';
-//   ERC20TOKEN = false; //'Burner'
-// } else if (window.location.hostname.indexOf('wallet.galleass.io') >= 0) {
-//   //WEB3_PROVIDER = "https://rinkeby.infura.io/v3/e0ea6e73570246bbb3d4bd042c4b5dac";
-//   WEB3_PROVIDER = 'http://localhost:8545';
-//   //CLAIM_RELAY = 'https://x.xdai.io'
-//   ERC20TOKEN = false; //'Burner'
-//   document.domain = 'galleass.io';
-// } else if (window.location.hostname.indexOf('qreth') >= 0) {
-//   WEB3_PROVIDER =
-//     'https://mainnet.infura.io/v3/e0ea6e73570246bbb3d4bd042c4b5dac';
-//   CLAIM_RELAY = false;
-//   ERC20TOKEN = false;
-// } else if (window.location.hostname.indexOf('xdai') >= 0) {
-//   WEB3_PROVIDER = POA_XDAI_NODE;
-//   CLAIM_RELAY = 'https://x.xdai.io';
-//   ERC20TOKEN = false;
-// } else if (window.location.hostname.indexOf('buffidai') >= 0) {
-//   WEB3_PROVIDER = POA_XDAI_NODE;
-//   CLAIM_RELAY = 'https://x.xdai.io';
-//   ERC20NAME = 'BUFF';
-//   ERC20VENDOR = 'VendingMachine';
-//   ERC20TOKEN = 'ERC20Vendable';
-//   ERC20IMAGE = bufficorn;
-//   LOADERIMAGE = bufficorn;
-// } else if (window.location.hostname.indexOf('burnerwallet.io') >= 0) {
-//   WEB3_PROVIDER = POA_XDAI_NODE;
-//   CLAIM_RELAY = 'https://x.xdai.io';
-//   ERC20NAME = 'BURN';
-//   ERC20VENDOR = 'BurnerVendor';
-//   ERC20TOKEN = 'Burner';
-//   ERC20IMAGE = cypherpunk;
-//   LOADERIMAGE = cypherpunk;
-// } else if (window.location.hostname.indexOf('burnerwithrelays') >= 0) {
-//   WEB3_PROVIDER = 'https://dai.poa.network';
-//   ERC20NAME = false;
-//   ERC20TOKEN = false;
-//   ERC20IMAGE = false;
-// }
-//
+{
+  /* <i className="fas fa-fire" /> */
+}
+console.log('WINDOW.LOCATION.HOSTNAME', window.location.hostname);
+if (
+  window.location.hostname.indexOf('localhost') >= 0 ||
+  window.location.hostname.indexOf('10.0.0.107') >= 0
+) {
+  XDAI_PROVIDER = 'http://localhost:8545';
+  WEB3_PROVIDER = 'http://localhost:8545';
+  CLAIM_RELAY = 'http://localhost:18462';
+  // if (true) {
+  ERC20NAME = false;
+  ERC20TOKEN = false;
+  ERC20IMAGE = false;
+  // } else {
+  // ERC20NAME = 'BUFF';
+  // ERC20VENDOR = 'VendingMachine';
+  // ERC20TOKEN = 'ERC20Vendable';
+  // ERC20IMAGE = bufficorn;
+  // XDAI_PROVIDER = 'http://localhost:8545';
+  // WEB3_PROVIDER = 'http://localhost:8545';
+  // LOADERIMAGE = bufficorn;
+  // }
+} else if (window.location.hostname.indexOf('s.xdai.io') >= 0) {
+  WEB3_PROVIDER = POA_XDAI_NODE;
+  CLAIM_RELAY = 'https://x.xdai.io';
+  ERC20TOKEN = false; //'Burner'
+  // } else if (window.location.hostname.indexOf('wallet.galleass.io') >= 0) {
+  //   //WEB3_PROVIDER = "https://rinkeby.infura.io/v3/e0ea6e73570246bbb3d4bd042c4b5dac";
+  //   WEB3_PROVIDER = 'http://localhost:8545';
+  //   //CLAIM_RELAY = 'https://x.xdai.io'
+  //   ERC20TOKEN = false; //'Burner'
+  //   document.domain = 'galleass.io';
+  // } else if (window.location.hostname.indexOf('qreth') >= 0) {
+  //   WEB3_PROVIDER =
+  //     'https://mainnet.infura.io/v3/e0ea6e73570246bbb3d4bd042c4b5dac';
+  //   CLAIM_RELAY = false;
+  //   ERC20TOKEN = false;
+} else if (window.location.hostname.indexOf('xdai') >= 0) {
+  WEB3_PROVIDER = POA_XDAI_NODE;
+  CLAIM_RELAY = 'https://x.xdai.io';
+  ERC20TOKEN = false;
+  // } else if (window.location.hostname.indexOf('buffidai') >= 0) {
+  //   WEB3_PROVIDER = POA_XDAI_NODE;
+  //   CLAIM_RELAY = 'https://x.xdai.io';
+  //   ERC20NAME = 'BUFF';
+  //   ERC20VENDOR = 'VendingMachine';
+  //   ERC20TOKEN = 'ERC20Vendable';
+  //   ERC20IMAGE = bufficorn;
+  //   LOADERIMAGE = bufficorn;
+  // } else if (window.location.hostname.indexOf('burnerwallet.io') >= 0) {
+  //   WEB3_PROVIDER = POA_XDAI_NODE;
+  //   CLAIM_RELAY = 'https://x.xdai.io';
+  //   ERC20NAME = 'BURN';
+  //   ERC20VENDOR = 'BurnerVendor';
+  //   ERC20TOKEN = 'Burner';
+  //   ERC20IMAGE = cypherpunk;
+  //   LOADERIMAGE = cypherpunk;
+} else if (window.location.hostname.indexOf('burnerwithrelays') >= 0) {
+  WEB3_PROVIDER = 'https://dai.poa.network';
+  ERC20NAME = false;
+  ERC20TOKEN = false;
+  ERC20IMAGE = false;
+}
+
 // if (ERC20NAME === 'BUFF') {
 //   mainStyle.backgroundImage = 'linear-gradient(#540d48, #20012d)';
 //   mainStyle.backgroundColor = '#20012d';
@@ -309,91 +312,116 @@ class App extends Component {
       document.getElementsByClassName('.btn').style,
     );
     window.addEventListener('resize', this.updateDimensions.bind(this));
-    // if(window.location.pathname){
-    //   console.log("PATH",window.location.pathname,window.location.pathname.length,window.location.hash)
-    //   if(window.location.pathname.indexOf("/pk")>=0){
-    //     let tempweb3 = new Web3();
-    //     let base64encodedPK = window.location.hash.replace("#","")
-    //     let rawPK = tempweb3.utils.bytesToHex(base64url.toBuffer(base64encodedPK))
-    //     this.setState({possibleNewPrivateKey:rawPK})
-    //     window.history.pushState({},"", "/");
-    //   }else if(window.location.pathname.length==43){
-    //     this.changeView('send_to_address')
-    //     console.log("CHANGE VIEW")
-    //   }else if(window.location.pathname.length==134){
-    //     let parts = window.location.pathname.split(";")
-    //     let claimId = parts[0].replace("/","")
-    //     let claimKey = parts[1]
-    //     console.log("DO CLAIM",claimId,claimKey)
-    //     this.setState({claimId,claimKey})
-    //     window.history.pushState({},"", "/");
-    //   }else if(
-    //     (window.location.pathname.length>=65&&window.location.pathname.length<=67&&window.location.pathname.indexOf(";")<0) ||
-    //     (window.location.hash.length>=65 && window.location.hash.length <=67 && window.location.hash.indexOf(";")<0)
-    //   ){
-    //     console.log("incoming private key")
-    //     let privateKey = window.location.pathname.replace("/","")
-    //     if(window.location.hash){
-    //       privateKey = window.location.hash
-    //     }
-    //     privateKey = privateKey.replace("#","")
-    //     if(privateKey.indexOf("0x")!=0){
-    //       privateKey="0x"+privateKey
-    //     }
-    //     //console.log("!!! possibleNewPrivateKey",privateKey)
-    //     this.setState({possibleNewPrivateKey:privateKey})
-    //     window.history.pushState({},"", "/");
-    //   }else if(window.location.pathname.indexOf("/vendors;")==0){
-    //     this.changeView('vendors')
-    //   }else{
-    //     let parts = window.location.pathname.split(";")
-    //     console.log("PARTS",parts)
-    //     if(parts.length>=2){
-    //       let sendToAddress = parts[0].replace("/","")
-    //       let sendToAmount = parts[1]
-    //       let extraData = ""
-    //       if(parts.length>=3){
-    //         extraData = parts[2]
-    //       }
-    //       if((parseFloat(sendToAmount)>0 || extraData) && sendToAddress.length==42){
-    //         this.changeView('send_to_address')
-    //       }
-    //     }
-    //   }
-    // }
-    // setTimeout(this.poll.bind(this), 150);
+    /* get private key */
+    if (window.location.pathname) {
+      console.log(
+        'PATH',
+        window.location.pathname,
+        window.location.pathname.length,
+        window.location.hash,
+      );
+      if (window.location.pathname.indexOf('/pk') >= 0) {
+        let tempweb3 = new Web3();
+        let base64encodedPK = window.location.hash.replace('#', '');
+        let rawPK = tempweb3.utils.bytesToHex(
+          base64url.toBuffer(base64encodedPK),
+        );
+        this.setState({ possibleNewPrivateKey: rawPK });
+        window.history.pushState({}, '', '/');
+      } else if (window.location.pathname.length == 43) {
+        this.changeView('send_to_address');
+        console.log('CHANGE VIEW');
+      } else if (window.location.pathname.length == 134) {
+        let parts = window.location.pathname.split(';');
+        let claimId = parts[0].replace('/', '');
+        let claimKey = parts[1];
+        console.log('DO CLAIM', claimId, claimKey);
+        this.setState({ claimId, claimKey });
+        window.history.pushState({}, '', '/');
+      } else if (
+        (window.location.pathname.length >= 65 &&
+          window.location.pathname.length <= 67 &&
+          window.location.pathname.indexOf(';') < 0) ||
+        (window.location.hash.length >= 65 &&
+          window.location.hash.length <= 67 &&
+          window.location.hash.indexOf(';') < 0)
+      ) {
+        console.log('incoming private key');
+        let privateKey = window.location.pathname.replace('/', '');
+        if (window.location.hash) {
+          privateKey = window.location.hash;
+        }
+        privateKey = privateKey.replace('#', '');
+        if (privateKey.indexOf('0x') != 0) {
+          privateKey = '0x' + privateKey;
+        }
+        //console.log("!!! possibleNewPrivateKey",privateKey)
+        this.setState({ possibleNewPrivateKey: privateKey });
+        window.history.pushState({}, '', '/');
+      } else if (window.location.pathname.indexOf('/vendors;') == 0) {
+        this.changeView('vendors');
+      } else {
+        let parts = window.location.pathname.split(';');
+        console.log('PARTS', parts);
+        if (parts.length >= 2) {
+          let sendToAddress = parts[0].replace('/', '');
+          let sendToAmount = parts[1];
+          let extraData = '';
+          if (parts.length >= 3) {
+            extraData = parts[2];
+          }
+          if (
+            (parseFloat(sendToAmount) > 0 || extraData) &&
+            sendToAddress.length == 42
+          ) {
+            this.changeView('send_to_address');
+          }
+        }
+      }
+    }
+    setTimeout(this.poll.bind(this), 150);
     setTimeout(this.setState({ web3: true }), 6500);
-    // interval = setInterval(this.poll.bind(this), 1500);
+    interval = setInterval(this.poll.bind(this), 1500);
     intervalLong = setInterval(this.longPoll.bind(this), 45000);
-    // setTimeout(this.longPoll.bind(this), 150);
+    setTimeout(this.longPoll.bind(this), 150);
 
-    // let mainnetweb3 = new Web3(new Web3.providers.WebsocketProvider('wss://mainnet.infura.io/ws/v3/e0ea6e73570246bbb3d4bd042c4b5dac'))
-    // let ensContract = new mainnetweb3.eth.Contract(require("./contracts/ENS.abi.js"),require("./contracts/ENS.address.js"))
-    // let daiContract
-    // try{
-    //   daiContract = new mainnetweb3.eth.Contract(require("./contracts/StableCoin.abi.js"),"0x89d24a6b4ccb1b6faa2625fe562bdd9a23260359")
-    // }catch(e){
-    //   console.log("ERROR LOADING DAI Stablecoin Contract",e)
-    // }
-    // let xdaiweb3 = new Web3(new Web3.providers.HttpProvider(XDAI_PROVIDER))
-    // this.setState({mainnetweb3,ensContract,xdaiweb3,daiContract})
+    let mainnetweb3 = new Web3(
+      new Web3.providers.WebsocketProvider(
+        'wss://mainnet.infura.io/ws/v3/e0ea6e73570246bbb3d4bd042c4b5dac',
+      ),
+    );
+    let ensContract = new mainnetweb3.eth.Contract(
+      require('./contracts/ENS.abi.js'),
+      require('./contracts/ENS.address.js'),
+    );
+    let daiContract;
+    try {
+      daiContract = new mainnetweb3.eth.Contract(
+        require('./contracts/StableCoin.abi.js'),
+        '0x89d24a6b4ccb1b6faa2625fe562bdd9a23260359',
+      );
+    } catch (e) {
+      console.log('ERROR LOADING DAI Stablecoin Contract', e);
+    }
+    let xdaiweb3 = new Web3(new Web3.providers.HttpProvider(XDAI_PROVIDER));
+    this.setState({ mainnetweb3, ensContract, xdaiweb3, daiContract });
   }
 
-  // componentDidUpdate(prevProps, prevState) {
-  //   let { network, web3 } = this.state;
-  //   if (web3 && network !== prevState.network /*&& !this.checkNetwork()*/) {
-  //     console.log(
-  //       'WEB3 DETECTED BUT NOT RIGHT NETWORK',
-  //       web3,
-  //       network,
-  //       prevState.network,
-  //     );
-  //     //this.changeAlert({
-  //     //  type: 'danger',
-  //     //  message: 'Wrong Network. Please use Custom RPC endpoint: https://dai.poa.network or turn off MetaMask.'
-  //     //}, false)
-  //   }
-  // }
+  componentDidUpdate(prevProps, prevState) {
+    let { network, web3 } = this.state;
+    if (web3 && network !== prevState.network /*&& !this.checkNetwork()*/) {
+      console.log(
+        'WEB3 DETECTED BUT NOT RIGHT NETWORK',
+        web3,
+        network,
+        prevState.network,
+      );
+      //this.changeAlert({
+      //  type: 'danger',
+      //  message: 'Wrong Network. Please use Custom RPC endpoint: https://dai.poa.network or turn off MetaMask.'
+      //}, false)
+    }
+  }
 
   componentWillUnmount() {
     clearInterval(interval);
@@ -458,143 +486,166 @@ class App extends Component {
     this.setState(update);
   }
 
-  // async poll() {
-  //   let badgeBalance = 0;
-  //   if (
-  //     this.state.contracts &&
-  //     (this.state.network == 'xDai' || this.state.network == 'Unknown') &&
-  //     this.state.contracts.Badges
-  //   ) {
-  //     //check for badges for this user
-  //     badgeBalance = await this.state.contracts.Badges.balanceOf(
-  //       this.state.account,
-  //     ).call();
-  //     if (badgeBalance > 0) {
-  //       let update = false;
-  //       for (let b = 0; b < badgeBalance; b++) {
-  //         let thisBadgeId = await this.state.contracts.Badges.tokenOfOwnerByIndex(
-  //           this.state.account,
-  //           b,
-  //         ).call();
-  //         if (!this.state.badges[thisBadgeId]) {
-  //           let thisBadgeData = await this.state.contracts.Badges.tokenURI(
-  //             thisBadgeId,
-  //           ).call();
-  //           //console.log("BADGE",b,thisBadgeId,thisBadgeData)
-  //           if (!this.state.badges[thisBadgeId]) {
-  //             console.log('Getting badge data ', thisBadgeData);
-  //             let response = axios.get(thisBadgeData).then(response => {
-  //               console.log('RESPONSE:', response);
-  //               if (response && response.data) {
-  //                 this.state.badges[thisBadgeId] = response.data;
-  //                 this.state.badges[thisBadgeId].id = thisBadgeId;
-  //                 update = true;
-  //               }
-  //             });
-  //           }
-  //         }
-  //       }
-  //       if (update) {
-  //         //console.log("Saving badges state...")
-  //         this.setState({ badges: this.state.badges });
-  //       }
-  //     }
-  //   }
-  //
-  //   //console.log(">>>>>>> <<< >>>>>> Looking into iframe...")
-  //   //console.log(document.getElementById('galleassFrame').contentWindow['web3'])
-  //
-  //   // if(ERC20TOKEN && this.state.contracts && (this.state.network=="xDai"||this.state.network=="Unknown")){
-  //   //   let gasBalance = await this.state.web3.eth.getBalance(this.state.account)
-  //   //   gasBalance = this.state.web3.utils.fromWei(""+gasBalance,'ether')
-  //   //   //console.log("Getting balanceOf "+this.state.account+" in contract ",this.state.contracts[ERC20TOKEN])
-  //   //   let tokenBalance = await this.state.contracts[ERC20TOKEN].balanceOf(this.state.account).call()
-  //   //   //console.log("balance is ",tokenBalance)
-  //   //   tokenBalance = this.state.web3.utils.fromWei(""+tokenBalance,'ether')
-  //   //
-  //   //   //console.log("Getting admin from ",this.state.contracts[ERC20VENDOR])
-  //   //   let isAdmin = await this.state.contracts[ERC20VENDOR].isAdmin(this.state.account).call()
-  //   //   //console.log("ISADMIN",this.state.account,isAdmin)
-  //   //   let isVendor = await this.state.contracts[ERC20VENDOR].vendors(this.state.account).call()
-  //   //   //console.log("isVendor",isVendor)
-  //   //
-  //   //   let vendorObject = this.state.vendorObject
-  //   //   let products = []//this.state.products
-  //   //   if(isVendor.isAllowed){
-  //   //     //console.log("LOADING VENDOR PRODUCTS")
-  //   //     let id = 0
-  //   //     if(!vendorObject){
-  //   //       let vendorData = await this.state.contracts[ERC20VENDOR].vendors(this.state.account).call()
-  //   //       //console.log("vendorData",vendorData)
-  //   //       vendorData.name = this.state.web3.utils.hexToUtf8(vendorData.name)
-  //   //       vendorObject = vendorData
-  //   //     }
-  //   //     //console.log("Looking up products for vendor ",this.state.account)
-  //   //     if(!products){
-  //   //       products = []
-  //   //     }
-  //   //     let found = true
-  //   //     while(found){
-  //   //       let nextProduct = await this.state.contracts[ERC20VENDOR].products(this.state.account,id).call()
-  //   //       if(nextProduct.exists){
-  //   //         products[id++] = nextProduct
-  //   //       }else{
-  //   //         found=false
-  //   //       }
-  //   //     }
-  //   //   }
-  //   //   //console.log("isVendor",isVendor,"SAVING PRODUCTS",products)
-  //   //
-  //   //   this.setState({gasBalance:gasBalance,balance:tokenBalance,isAdmin:isAdmin,isVendor:isVendor,hasUpdateOnce:true,vendorObject,products})
-  //   // }
-  //
-  //   if (this.state.account) {
-  //     let ethBalance = 0.0;
-  //     let daiBalance = 0.0;
-  //     let xdaiBalance = 0.0;
-  //
-  //     if (this.state.mainnetweb3) {
-  //       try {
-  //         ethBalance = await this.state.mainnetweb3.eth.getBalance(
-  //           this.state.account,
-  //         );
-  //         ethBalance = this.state.mainnetweb3.utils.fromWei(
-  //           '' + ethBalance,
-  //           'ether',
-  //         );
-  //
-  //         if (this.state.daiContract) {
-  //           daiBalance = await this.state.daiContract.methods
-  //             .balanceOf(this.state.account)
-  //             .call();
-  //           daiBalance = this.state.mainnetweb3.utils.fromWei(
-  //             '' + daiBalance,
-  //             'ether',
-  //           );
-  //         }
-  //       } catch (e) {
-  //         console.log(e);
-  //       }
-  //     }
-  //     if (this.state.xdaiweb3) {
-  //       xdaiBalance = await this.state.xdaiweb3.eth.getBalance(
-  //         this.state.account,
-  //       );
-  //       xdaiBalance = this.state.xdaiweb3.utils.fromWei(
-  //         '' + xdaiBalance,
-  //         'ether',
-  //       );
-  //     }
-  //
-  //     this.setState({
-  //       ethBalance,
-  //       daiBalance,
-  //       xdaiBalance,
-  //       badgeBalance,
-  //       hasUpdateOnce: true,
-  //     });
-  //   }
-  // }
+  async poll() {
+    let badgeBalance = 0;
+    if (
+      this.state.contracts &&
+      (this.state.network == 'xDai' || this.state.network == 'Unknown') &&
+      this.state.contracts.Badges
+    ) {
+      //check for badges for this user
+      badgeBalance = await this.state.contracts.Badges.balanceOf(
+        this.state.account,
+      ).call();
+      if (badgeBalance > 0) {
+        let update = false;
+        for (let b = 0; b < badgeBalance; b++) {
+          let thisBadgeId = await this.state.contracts.Badges.tokenOfOwnerByIndex(
+            this.state.account,
+            b,
+          ).call();
+          if (!this.state.badges[thisBadgeId]) {
+            let thisBadgeData = await this.state.contracts.Badges.tokenURI(
+              thisBadgeId,
+            ).call();
+            //console.log("BADGE",b,thisBadgeId,thisBadgeData)
+            if (!this.state.badges[thisBadgeId]) {
+              console.log('Getting badge data ', thisBadgeData);
+              let response = axios.get(thisBadgeData).then(response => {
+                console.log('RESPONSE:', response);
+                if (response && response.data) {
+                  this.state.badges[thisBadgeId] = response.data;
+                  this.state.badges[thisBadgeId].id = thisBadgeId;
+                  update = true;
+                }
+              });
+            }
+          }
+        }
+        if (update) {
+          //console.log("Saving badges state...")
+          this.setState({ badges: this.state.badges });
+        }
+      }
+    }
+
+    //console.log(">>>>>>> <<< >>>>>> Looking into iframe...")
+    //console.log(document.getElementById('galleassFrame').contentWindow['web3'])
+
+    if (
+      ERC20TOKEN &&
+      this.state.contracts &&
+      (this.state.network == 'xDai' || this.state.network == 'Unknown')
+    ) {
+      let gasBalance = await this.state.web3.eth.getBalance(this.state.account);
+      gasBalance = this.state.web3.utils.fromWei('' + gasBalance, 'ether');
+      //console.log("Getting balanceOf "+this.state.account+" in contract ",this.state.contracts[ERC20TOKEN])
+      let tokenBalance = await this.state.contracts[ERC20TOKEN].balanceOf(
+        this.state.account,
+      ).call();
+      //console.log("balance is ",tokenBalance)
+      tokenBalance = this.state.web3.utils.fromWei('' + tokenBalance, 'ether');
+
+      //console.log("Getting admin from ",this.state.contracts[ERC20VENDOR])
+      let isAdmin = await this.state.contracts[ERC20VENDOR].isAdmin(
+        this.state.account,
+      ).call();
+      //console.log("ISADMIN",this.state.account,isAdmin)
+      let isVendor = await this.state.contracts[ERC20VENDOR].vendors(
+        this.state.account,
+      ).call();
+      //console.log("isVendor",isVendor)
+
+      let vendorObject = this.state.vendorObject;
+      let products = []; //this.state.products
+      if (isVendor.isAllowed) {
+        //console.log("LOADING VENDOR PRODUCTS")
+        let id = 0;
+        if (!vendorObject) {
+          let vendorData = await this.state.contracts[ERC20VENDOR].vendors(
+            this.state.account,
+          ).call();
+          //console.log("vendorData",vendorData)
+          vendorData.name = this.state.web3.utils.hexToUtf8(vendorData.name);
+          vendorObject = vendorData;
+        }
+        //console.log("Looking up products for vendor ",this.state.account)
+        if (!products) {
+          products = [];
+        }
+        let found = true;
+        while (found) {
+          let nextProduct = await this.state.contracts[ERC20VENDOR].products(
+            this.state.account,
+            id,
+          ).call();
+          if (nextProduct.exists) {
+            products[id++] = nextProduct;
+          } else {
+            found = false;
+          }
+        }
+      }
+      //console.log("isVendor",isVendor,"SAVING PRODUCTS",products)
+
+      this.setState({
+        gasBalance: gasBalance,
+        balance: tokenBalance,
+        isAdmin: isAdmin,
+        isVendor: isVendor,
+        hasUpdateOnce: true,
+        vendorObject,
+        products,
+      });
+    }
+
+    if (this.state.account) {
+      let ethBalance = 0.0;
+      let daiBalance = 0.0;
+      let xdaiBalance = 0.0;
+
+      if (this.state.mainnetweb3) {
+        try {
+          ethBalance = await this.state.mainnetweb3.eth.getBalance(
+            this.state.account,
+          );
+          ethBalance = this.state.mainnetweb3.utils.fromWei(
+            '' + ethBalance,
+            'ether',
+          );
+
+          if (this.state.daiContract) {
+            daiBalance = await this.state.daiContract.methods
+              .balanceOf(this.state.account)
+              .call();
+            daiBalance = this.state.mainnetweb3.utils.fromWei(
+              '' + daiBalance,
+              'ether',
+            );
+          }
+        } catch (e) {
+          console.log(e);
+        }
+      }
+      if (this.state.xdaiweb3) {
+        xdaiBalance = await this.state.xdaiweb3.eth.getBalance(
+          this.state.account,
+        );
+        xdaiBalance = this.state.xdaiweb3.utils.fromWei(
+          '' + xdaiBalance,
+          'ether',
+        );
+      }
+
+      this.setState({
+        ethBalance,
+        daiBalance,
+        xdaiBalance,
+        badgeBalance,
+        hasUpdateOnce: true,
+      });
+    }
+  }
   longPoll() {
     axios
       .get('https://api.coinmarketcap.com/v2/ticker/1027/')
@@ -603,72 +654,72 @@ class App extends Component {
         this.setState({ ethprice });
       });
   }
-  // setPossibleNewPrivateKey(value) {
-  //   this.setState({ possibleNewPrivateKey: value }, () => {
-  //     this.dealWithPossibleNewPrivateKey();
-  //   });
-  // }
-  // async dealWithPossibleNewPrivateKey() {
-  //   //this happens as page load and you need to wait until
-  //   if (this.state && this.state.hasUpdateOnce) {
-  //     if (
-  //       this.state.metaAccount &&
-  //       this.state.metaAccount.privateKey.replace('0x', '') ==
-  //         this.state.possibleNewPrivateKey.replace('0x', '')
-  //     ) {
-  //       this.setState({ possibleNewPrivateKey: false });
-  //       this.changeAlert({
-  //         type: 'warning',
-  //         message: 'Imported identical private key.',
-  //       });
-  //     } else {
-  //       console.log('Checking on pk import...');
-  //       console.log('this.state.balance', this.state.balance);
-  //       console.log('this.state.metaAccount', this.state.metaAccount);
-  //       console.log('this.state.xdaiBalance', this.state.xdaiBalance);
-  //       console.log('this.state.daiBalance', this.state.daiBalance);
-  //       console.log('this.state.isVendor', this.state.isVendor);
-  //
-  //       if (
-  //         !this.state.metaAccount ||
-  //         this.state.balance >= 0.05 ||
-  //         this.state.xdaiBalance >= 0.05 ||
-  //         this.state.ethBalance >= 0.0005 ||
-  //         this.state.daiBalance >= 0.05 ||
-  //         (this.state.isVendor && this.state.isVendor.isAllowed)
-  //       ) {
-  //         this.setState(
-  //           {
-  //             possibleNewPrivateKey: false,
-  //             withdrawFromPrivateKey: this.state.possibleNewPrivateKey,
-  //           },
-  //           () => {
-  //             this.changeView('withdraw_from_private');
-  //           },
-  //         );
-  //       } else {
-  //         this.setState({
-  //           possibleNewPrivateKey: false,
-  //           newPrivateKey: this.state.possibleNewPrivateKey,
-  //         });
-  //         localStorage.setItem(this.state.account + 'loadedBlocksTop', '');
-  //         localStorage.setItem(this.state.account + 'recentTxs', '');
-  //         localStorage.setItem(
-  //           this.state.account + 'transactionsByAddress',
-  //           '',
-  //         );
-  //         this.setState({
-  //           recentTxs: [],
-  //           transactionsByAddress: {},
-  //           fullRecentTxs: [],
-  //           fullTransactionsByAddress: {},
-  //         });
-  //       }
-  //     }
-  //   } else {
-  //     setTimeout(this.dealWithPossibleNewPrivateKey.bind(this), 500);
-  //   }
-  // }
+  setPossibleNewPrivateKey(value) {
+    this.setState({ possibleNewPrivateKey: value }, () => {
+      this.dealWithPossibleNewPrivateKey();
+    });
+  }
+  async dealWithPossibleNewPrivateKey() {
+    //this happens as page load and you need to wait until
+    if (this.state && this.state.hasUpdateOnce) {
+      if (
+        this.state.metaAccount &&
+        this.state.metaAccount.privateKey.replace('0x', '') ==
+          this.state.possibleNewPrivateKey.replace('0x', '')
+      ) {
+        this.setState({ possibleNewPrivateKey: false });
+        this.changeAlert({
+          type: 'warning',
+          message: 'Imported identical private key.',
+        });
+      } else {
+        console.log('Checking on pk import...');
+        console.log('this.state.balance', this.state.balance);
+        console.log('this.state.metaAccount', this.state.metaAccount);
+        console.log('this.state.xdaiBalance', this.state.xdaiBalance);
+        console.log('this.state.daiBalance', this.state.daiBalance);
+        console.log('this.state.isVendor', this.state.isVendor);
+
+        if (
+          !this.state.metaAccount ||
+          this.state.balance >= 0.05 ||
+          this.state.xdaiBalance >= 0.05 ||
+          this.state.ethBalance >= 0.0005 ||
+          this.state.daiBalance >= 0.05 ||
+          (this.state.isVendor && this.state.isVendor.isAllowed)
+        ) {
+          this.setState(
+            {
+              possibleNewPrivateKey: false,
+              withdrawFromPrivateKey: this.state.possibleNewPrivateKey,
+            },
+            () => {
+              this.changeView('withdraw_from_private');
+            },
+          );
+        } else {
+          this.setState({
+            possibleNewPrivateKey: false,
+            newPrivateKey: this.state.possibleNewPrivateKey,
+          });
+          localStorage.setItem(this.state.account + 'loadedBlocksTop', '');
+          localStorage.setItem(this.state.account + 'recentTxs', '');
+          localStorage.setItem(
+            this.state.account + 'transactionsByAddress',
+            '',
+          );
+          this.setState({
+            recentTxs: [],
+            transactionsByAddress: {},
+            fullRecentTxs: [],
+            fullTransactionsByAddress: {},
+          });
+        }
+      }
+    } else {
+      setTimeout(this.dealWithPossibleNewPrivateKey.bind(this), 500);
+    }
+  }
 
   checkNetwork() {
     let { network } = this.state;
