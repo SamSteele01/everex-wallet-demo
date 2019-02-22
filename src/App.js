@@ -1273,7 +1273,8 @@ class App extends Component {
               top: 192,
               width: 194,
             }}
-            value="https://dai.poa.network"
+            // value="https://dai.poa.network"
+            value="Main Ethereum Network"
           />
           <img
             style={{
