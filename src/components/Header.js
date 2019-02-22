@@ -1,6 +1,5 @@
 import React from 'react';
 import { Scaler, Blockie } from 'dapparatus';
-import burnerloader from '../styles/burnerloader.gif';
 import everexLogo from '../styles/Everex_logo.jpg';
 
 export default ({
