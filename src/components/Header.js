@@ -67,10 +67,11 @@ export default ({
   };
 
   if (view == 'send_to_address') {
-    scanButtonStyle.position = 'absolute';
-    scanButtonStyle.right = -3;
-    scanButtonStyle.top = 217;
-    delete scanButtonStyle.bottom;
+    // scanButtonStyle.position = 'absolute';
+    // scanButtonStyle.right = -3;
+    // scanButtonStyle.top = 217;
+    // delete scanButtonStyle.bottom;
+    scanButtonStyle.display = 'hidden';
   }
 
   let opacity = 1;

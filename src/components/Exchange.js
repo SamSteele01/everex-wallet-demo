@@ -3454,7 +3454,7 @@ export default class Exchange extends React.Component {
             {sendDaiButton}
           </div>
         </div>
-        {sendDaiRow}
+        {/* {sendDaiRow} */}
       </div>
     );
   }
