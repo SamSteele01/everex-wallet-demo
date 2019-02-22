@@ -1702,7 +1702,7 @@ class App extends Component {
                               dollarDisplay={dollarDisplay}
                             />
                             <Ruler />
-                            <Balance
+                            {/* <Balance
                               icon={usdIcon}
                               selected={selected}
                               text={'USD'}
@@ -1710,7 +1710,7 @@ class App extends Component {
                               address={account}
                               dollarDisplay={dollarDisplay}
                             />
-                            <Ruler />
+                            <Ruler /> */}
                             {badgeDisplay}
 
                             <MainCard
@@ -2268,15 +2268,15 @@ class App extends Component {
                               evxpIcon={evxpIcon}
                               ethIcon={ethIcon}
                               usdIcon={usdIcon}
-                              ERC20NAME={ERC20NAME}
-                              ERC20IMAGE={ERC20IMAGE}
-                              ERC20TOKEN={ERC20TOKEN}
-                              ERC20VENDOR={ERC20VENDOR}
+                              // ERC20NAME={ERC20NAME}
+                              // ERC20IMAGE={ERC20IMAGE}
+                              // ERC20TOKEN={ERC20TOKEN}
+                              // ERC20VENDOR={ERC20VENDOR}
                               evxpBalance={this.state.evxpBalance}
                               ethprice={this.state.ethprice}
                               ethBalance={this.state.ethBalance}
                               usdBalance={this.state.usdBalance}
-                              // mainnetweb3={this.state.mainnetweb3}
+                              mainnetweb3={this.state.mainnetweb3}
                               // xdaiweb3={this.state.xdaiweb3}
                               daiContract={this.state.daiContract}
                               ensContract={this.state.ensContract}
