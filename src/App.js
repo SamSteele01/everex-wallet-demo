@@ -2418,7 +2418,7 @@ class App extends Component {
               {alert && <Footer alert={alert} changeAlert={this.changeAlert} />}
             </div>
 
-            {/* <Dapparatus
+            <Dapparatus
               config={{
                 DEBUG: false,
                 hide: true,
@@ -2556,8 +2556,8 @@ class App extends Component {
                   });
                 }
               }}
-            /> */}
-            {/* <Gas
+            />
+            <Gas
               network={this.state.network}
               onUpdate={state => {
                 console.log('Gas price update:', state);
@@ -2566,7 +2566,7 @@ class App extends Component {
                   console.log('GWEI set:', this.state);
                 });
               }}
-            /> */}
+            />
             {eventParser}
           </div>
         </div>
