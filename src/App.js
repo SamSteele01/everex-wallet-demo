@@ -660,17 +660,18 @@ class App extends Component {
         this.setState({ ethprice });
       });
   }
-  setPossibleNewPrivateKey(value) {
-    this.setState({ possibleNewPrivateKey: value }, () => {
-      this.dealWithPossibleNewPrivateKey();
-    });
-  }
+  /* not used */
+  // setPossibleNewPrivateKey(value) {
+  //   this.setState({ possibleNewPrivateKey: value }, () => {
+  //     this.dealWithPossibleNewPrivateKey();
+  //   });
+  // }
   async dealWithPossibleNewPrivateKey() {
     //this happens as page load and you need to wait until
     if (this.state && this.state.hasUpdateOnce) {
       if (
         this.state.metaAccount &&
-        this.state.metaAccount.privateKey.replace('0x', '') ==
+        this.state.metaAccount.privateKey.replace('0x', '') ===
           this.state.possibleNewPrivateKey.replace('0x', '')
       ) {
         this.setState({ possibleNewPrivateKey: false });
